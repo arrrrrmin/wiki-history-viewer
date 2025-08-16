@@ -56,10 +56,13 @@ export async function* fetchPageHistoryPaginated(
     lang: string,
     title: string,
     maxPages = 10,
-    delayMs = 200,
+    delayMs = 250,
     signal?: AbortSignal,
+    endpoint?: string,
 ) {
-    let endpoint = `https://api.wikimedia.org/core/v1/wikipedia/${lang}/page/${encodeURIComponent(title)}/history`;
+    if (!endpoint) {
+        endpoint = `https://api.wikimedia.org/core/v1/wikipedia/${lang}/page/${encodeURIComponent(title)}/history`;
+    }
     let pageCount = 0;
 
     while (endpoint && pageCount < maxPages) {
@@ -72,10 +75,10 @@ export async function* fetchPageHistoryPaginated(
         }
 
         let data = (await res.json()) as WikimediaHistoryResponse;
-        data.revisions = data.revisions.map(d => ({ ...d, timestamp: new Date(d.timestamp) }))
+        data.revisions = data.revisions.map(r => ({ ...r, timestamp: new Date(r.timestamp) })).filter(r => r.user.name && r.user.id);
 
         // Yield this batch immediately
-        yield data.revisions;
+        yield { revisions: data.revisions, endpoint: data.older };
 
         // Prepare the next page URL if available
         if (data.older) {
