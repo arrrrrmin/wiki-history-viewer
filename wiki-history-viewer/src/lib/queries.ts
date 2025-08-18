@@ -76,7 +76,7 @@ export async function* fetchPageHistoryPaginated(
 
         let data = (await res.json()) as WikimediaHistoryResponse;
         data.revisions = data.revisions.map(r => ({ ...r, timestamp: new Date(r.timestamp) })).filter(r => r.user.name && r.user.id);
-
+        console.log("New batch queried")
         // Yield this batch immediately
         yield { revisions: data.revisions, endpoint: data.older };
 

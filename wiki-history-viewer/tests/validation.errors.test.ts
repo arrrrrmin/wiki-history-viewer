@@ -1,4 +1,4 @@
-import { assert, expect, suite, test } from 'vitest'
+import { assert, suite, test } from 'vitest'
 
 import { parseWikipediaUrl } from '$lib/validation';
 import * as errors from "../src/lib/validation.errors";

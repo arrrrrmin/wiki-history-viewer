@@ -1,16 +1,45 @@
-import type { WikimediaRevision } from "$lib/queries";
-import * as d3 from "d3";
+type ElementKey = string;
+type ElementType = string;
 
-export function getRevisionDateRange(
-    revisions: WikimediaRevision[]
-): [Date, Date] {
-    if (!revisions || revisions.length === 0) {
-        const now = new Date();
-        return [now, now];
+export class IdHandler {
+    private chartId: string;
+    private registry: Map<ElementType, Map<ElementKey, string>>;
+
+    constructor(chartId: string) {
+        this.chartId = chartId;
+        this.registry = new Map();
     }
 
-    const min = d3.min(revisions, d => new Date(d.timestamp))!;
-    const max = d3.max(revisions, d => new Date(d.timestamp))!;
+    /**  Register an element type/id and return the generated DOM id */
+    register(elementType: string, elementId: string): string {
+        if (!this.registry.has(elementType)) {
+            this.registry.set(elementType, new Map());
+        }
 
-    return [min, max];
+        const elementMap = this.registry.get(elementType)!;
+
+        if (elementMap.has(elementId)) {
+            // Already registered → return existing
+            return elementMap.get(elementId)!;
+        }
+
+        const domId = `${this.chartId}-${elementType}-${elementId}`;
+        elementMap.set(elementId, domId);
+        return domId;
+    }
+
+    /** Find a previously registered id */
+    find(elementType: string, elementId: string): string | undefined {
+        return this.registry.get(elementType)?.get(elementId);
+    }
+
+    /** Utility: return a d3 selector-ready string 
+     * This function auto-registeres in case type/id pair does not exist */
+    selector(elementType: string, elementId: string): string {
+        let id = this.find(elementType, elementId);
+        if (!id) {
+            id = this.register(elementType, elementId)
+        }
+        return `${elementType}#${id}`;
+    }
 }
