@@ -16,7 +16,7 @@ export interface ProjectConfig {
 
 export const projectConfig: ProjectConfig = {
     title: "Wikipedia History Visualizer",
-    description: "A project to visualize edit revisions history of wikipedia articles over time.",
+    description: "Visualize the edit revision history of wikipedia articles over time.",
     source: {
         url: "https://github.com/arrrrrmin/wiki-history-viewer",
         name: "wiki-history-viewer"

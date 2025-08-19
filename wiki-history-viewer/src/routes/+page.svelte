@@ -125,26 +125,37 @@
 </script>
 
 <header>
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+    <div class="mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
             {projectConfig.title}
         </h1>
-        <p class="text-2xl">{projectConfig.description}</p>
+        <p class="text-xl/6 md:text-2xl/12">{projectConfig.description}</p>
     </div>
 </header>
-<main class="pt-8">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <h3 class="text-xl font-semibold text-gray-900">Usage</h3>
-        <p class="mt-2 pb-8 max-w-4xl text-base text-gray-700">
+<main class="pt-4 md:pt-8 bg-white">
+    <div class="mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
+        <h3 class="text-lg md:text-xl font-semibold text-gray-900">Usage</h3>
+        <p class="mt-1 md:mt-2 pb-4 md:pb-8 max-w-4xl text-sm md:text-base text-gray-700">
             {projectConfig.introduction}
         </p>
-
-        <div>
+        <h3 class="text-lg md:text-xl font-semibold text-gray-900">Credits</h3>
+        <p class="mt-1 md:mt-2 pb-4 md:pb-8 max-w-4xl text-sm md:text-base text-gray-700">
+            {projectConfig.credits}
+            <br />
+            This is an open source tool. If you want to check the source code you
+            can do so:
+            <a
+                href={projectConfig.source.url}
+                target="_blank"
+                class="text-indigo-600">{projectConfig.source.name}</a
+            >.
+        </p>
+        <div class="mt-10">
             <form onsubmit={handleFetch}>
-                <div class="mt-2 flex">
+                <div class="mt-2 md:flex">
                     <label
                         for="input"
-                        class="flex shrink-0 items-center rounded-l-md bg-white px-3 text-base text-gray-500 shadow-sm outline -outline-offset-1 outline-gray-300 sm:text-sm/6"
+                        class=" hidden md:flex shrink-0 items-center rounded-l-md bg-white px-3 text-base text-gray-500 shadow-sm outline -outline-offset-1 outline-gray-300"
                     >
                         Wikipedia URL:
                     </label>
@@ -157,7 +168,7 @@
                         class="block w-full rounded-r-sm bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm outline -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                         bind:value={input}
                     />
-                    <div class="ml-2 flex gap-2">
+                    <div class="mt-2 md:mt-0 md:ml-2 flex gap-2">
                         <button
                             type="submit"
                             class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -178,20 +189,22 @@
                                 disabled={false}>Stop</button
                             >
                         {/if}
-                        <!-- Load more -->
-                        {#if (nextEndpoint === undefined || nextEndpoint === "") && loading}
-                            <button
-                                type="button"
-                                class="rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 whitespace-nowrap"
-                                disabled={true}>Load more</button
-                            >
-                        {:else}
-                            <button
-                                type="button"
-                                class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 whitespace-nowrap"
-                                onclick={handleNext}
-                                disabled={false}>Load more</button
-                            >
+                        {#if allRevisions && allRevisions.length > 0}
+                            <!-- Load more -->
+                            {#if (nextEndpoint === undefined || nextEndpoint === "") && loading}
+                                <button
+                                    type="button"
+                                    class="rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 whitespace-nowrap"
+                                    disabled={true}>Load more</button
+                                >
+                            {:else}
+                                <button
+                                    type="button"
+                                    class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 whitespace-nowrap"
+                                    onclick={handleNext}
+                                    disabled={false}>Load more</button
+                                >
+                            {/if}
                         {/if}
                     </div>
                 </div>
@@ -218,7 +231,7 @@
                 bind:revisions={allRevisions}
                 bind:dataOptions
             />
-            
+
             <!-- <Rideline
                 id="revrideline"
                 {result}
