@@ -1,9 +1,16 @@
 <script lang="ts">
     import { parseWikipediaUrl, type WikiUrlParts } from "$lib/validation";
+    import {
+        hasRevisionsStore,
+        revisionsStore,
+        isLoadingStore,
+    } from "$lib/stores/revisions";
+    import { errorStore, hasErrorStore } from "$lib/stores/errors";
+    import { parserStore, hasParsedStore } from "$lib/stores/parser";
     import * as errors from "$lib/validation.errors";
     import {
         fetchPageHistoryPaginated,
-        type WikimediaRevision,
+        // type WikimediaRevision,
     } from "$lib/queries";
     import { projectConfig, queryConfig } from "$lib/config";
     import { onDestroy } from "svelte";
@@ -12,115 +19,88 @@
     import Simpleline from "$lib/components/Simpleline.svelte";
     import UserActivity from "$lib/components/UserActivity.svelte";
 
-    let input = $state("");
-    let loading = $state(false);
-    let result: WikiUrlParts | null = $state(null);
-    let errorMsg = $state("");
-
-    let allRevisions: WikimediaRevision[] = $state([]);
-    let nextEndpoint: string = $state("");
-
-    // Options for data transformation
-    let dataOptions = $state({
-        allowMinors: true,
-        allowUnknownEditors: true,
-        filterMinValue: 0,
-    });
+    let input: string = $state("");
 
     let controller: AbortController | null = null;
 
     function parseAction() {
         try {
-            result = parseWikipediaUrl(input);
-            errorMsg = "";
+            const parts = parseWikipediaUrl(input);
+            parserStore.setParsed(parts.lang, parts.title);
+            errorStore.reset();
         } catch (err) {
             if (err instanceof errors.WikipediaUrlError) {
-                errorMsg = err.message;
+                errorStore.setError(err.message);
             } else {
+                // This could be send to a custom API endpoint for analytics purposes
                 console.log("Unhandled error occured");
                 console.log(err);
-                errorMsg = "Ok, sorry haven't seen this type of url so far.";
+                errorStore.setError(
+                    "Ok, sorry haven't seen this type of url so far.",
+                );
             }
-            result = null;
-            loading = false;
+            parserStore.reset();
+            revisionsStore.setLoading(false);
         }
     }
 
     async function performQueries(
-        lang: string,
-        title: string,
         n: number,
         decay: number,
         controller: AbortController,
     ) {
         try {
-            for await (const {
-                revisions,
-                endpoint,
-            } of fetchPageHistoryPaginated(
-                lang,
-                title,
+            revisionsStore.setLoading(true);
+            for await (const _ of fetchPageHistoryPaginated(
+                $parserStore?.lang!,
+                $parserStore?.title!,
                 n,
                 decay,
                 controller.signal,
             )) {
-                nextEndpoint = endpoint;
-                allRevisions = [...allRevisions, ...revisions];
             }
         } catch (err) {
-            errorMsg = err instanceof Error ? err.message : String(err);
+            if (err instanceof Error) {
+                errorStore.setError(err.message);
+            } else {
+                errorStore.setError(String(err));
+            }
         } finally {
-            loading = false;
+            revisionsStore.setLoading(false);
         }
     }
 
     async function handleFetch() {
-        if (loading) return; // Avoid concurrent queries
-        errorMsg = "";
-        loading = true;
+        if ($isLoadingStore) return; // Avoid concurrent queries
+        parserStore.reset();
+        errorStore.reset();
         controller = new AbortController();
         parseAction();
-        allRevisions = [];
-        if (result) {
-            await performQueries(
-                result.lang,
-                result.title,
-                queryConfig.n,
-                queryConfig.decay,
-                controller,
-            );
+        revisionsStore.reset();
+        if ($hasParsedStore) {
+            await performQueries(queryConfig.n, queryConfig.decay, controller);
         }
     }
 
     async function handleNext() {
-        if (!result) return; // No language or title provided
-        if (loading) return; // Avoid concurrent queries
-        if (!controller) return; // Controller is set on initial load
-        errorMsg = "";
-        loading = true;
+        if (!$hasParsedStore) return; // No language or title provided
+        if ($isLoadingStore) return; // Avoid concurrent queries
         controller = new AbortController();
-        for await (const { revisions, endpoint } of fetchPageHistoryPaginated(
-            result.lang,
-            result.title,
-            1,
-            queryConfig.decay,
-            controller.signal,
-            nextEndpoint,
-        )) {
-            nextEndpoint = endpoint;
-            allRevisions = [...allRevisions, ...revisions];
-        }
-        loading = false;
+        errorStore.reset();
+        await performQueries(1, queryConfig.decay, controller);
     }
 
     function handleStop() {
-        console.log("Cancle clicked");
+        console.log("Stop clicked");
         controller?.abort();
     }
 
     // Cancel when component is destroyed
     onDestroy(() => {
         controller?.abort();
+        parserStore.reset();
+        errorStore.reset();
+        revisionsStore.reset();
     });
 </script>
 
@@ -135,11 +115,15 @@
 <main class="pt-4 md:pt-8 bg-white">
     <div class="mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
         <h3 class="text-lg md:text-xl font-semibold text-gray-900">Usage</h3>
-        <p class="mt-1 md:mt-2 pb-4 md:pb-8 max-w-4xl text-sm md:text-base text-gray-700">
+        <p
+            class="mt-1 md:mt-2 pb-4 md:pb-8 max-w-4xl text-sm md:text-base text-gray-700"
+        >
             {projectConfig.introduction}
         </p>
         <h3 class="text-lg md:text-xl font-semibold text-gray-900">Credits</h3>
-        <p class="mt-1 md:mt-2 pb-4 md:pb-8 max-w-4xl text-sm md:text-base text-gray-700">
+        <p
+            class="mt-1 md:mt-2 pb-4 md:pb-8 max-w-4xl text-sm md:text-base text-gray-700"
+        >
             {projectConfig.credits}
             <br />
             This is an open source tool. If you want to check the source code you
@@ -175,34 +159,34 @@
                             >Show</button
                         >
                         <!-- Stop loading -->
-                        {#if !loading}
-                            <button
-                                type="button"
-                                class="rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300"
-                                disabled={true}>Stop</button
-                            >
-                        {:else}
+                        {#if $isLoadingStore}
                             <button
                                 type="button"
                                 class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                                 onclick={handleStop}
                                 disabled={false}>Stop</button
                             >
+                        {:else}
+                            <button
+                                type="button"
+                                class="rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300"
+                                disabled={true}>Stop</button
+                            >
                         {/if}
-                        {#if allRevisions && allRevisions.length > 0}
+                        {#if $hasRevisionsStore}
                             <!-- Load more -->
-                            {#if (nextEndpoint === undefined || nextEndpoint === "") && loading}
-                                <button
-                                    type="button"
-                                    class="rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 whitespace-nowrap"
-                                    disabled={true}>Load more</button
-                                >
-                            {:else}
+                            {#if $revisionsStore.hasMore && !$isLoadingStore}
                                 <button
                                     type="button"
                                     class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 whitespace-nowrap"
                                     onclick={handleNext}
                                     disabled={false}>Load more</button
+                                >
+                            {:else}
+                                <button
+                                    type="button"
+                                    class="rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 whitespace-nowrap"
+                                    disabled={true}>Load more</button
                                 >
                             {/if}
                         {/if}
@@ -210,34 +194,17 @@
                 </div>
             </form>
         </div>
-        {#if errorMsg}
+        {#if $hasErrorStore}
             <div class="pt-2">
-                <WarningMessage message={errorMsg} />
+                <WarningMessage message={$errorStore.message} />
             </div>
         {/if}
     </div>
-    {#if allRevisions && allRevisions.length > 0}
+    {#if $hasParsedStore && $hasRevisionsStore}
         <div class="mx-auto max-w-6xl mt-12 border-t-1 border-gray-200">
-            <DataOptions bind:dataOptions />
-            <UserActivity
-                id="revuseractiv"
-                {result}
-                bind:revisions={allRevisions}
-                bind:dataOptions
-            />
-            <Simpleline
-                id="revoverview"
-                {result}
-                bind:revisions={allRevisions}
-                bind:dataOptions
-            />
-
-            <!-- <Rideline
-                id="revrideline"
-                {result}
-                bind:revisions={allRevisions}
-                bind:dataOptions
-            /> -->
+            <DataOptions />
+            <Simpleline id="revoverview" />
+            <UserActivity id="revuseractiv" />
         </div>
     {/if}
 </main>

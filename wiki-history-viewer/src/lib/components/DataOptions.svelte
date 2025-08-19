@@ -1,13 +1,5 @@
 <script lang="ts">
-    let { dataOptions = $bindable(), ...props } = $props();
-
-    const toggleAllowMinors = () => {
-        dataOptions.allowMinors = !dataOptions.allowMinors;
-    };
-
-    const toggleAllowUnknownEditors = () => {
-        dataOptions.allowUnknownEditors = !dataOptions.allowUnknownEditors;
-    };
+    import { dataSettingsStore } from "$lib/stores/datasettings";
 
     // All `setFilterMinValue` if needed, currently not used anyway
 </script>
@@ -60,7 +52,7 @@
                 name="allowMinors"
                 aria-label="Allow minor edits"
                 checked
-                onchange={toggleAllowMinors}
+                onchange={dataSettingsStore.toggleAllowMinors}
                 class="absolute inset-0 appearance-none focus:outline-none"
             />
         </div>
@@ -124,7 +116,7 @@
                 name="allowMinors"
                 aria-label="Allow unknown/anonymous or banned users"
                 checked
-                onchange={toggleAllowUnknownEditors}
+                onchange={dataSettingsStore.toggleAllowUnknownEditors}
                 class="absolute inset-0 appearance-none focus:outline-none"
             />
         </div>

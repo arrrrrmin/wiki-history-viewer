@@ -3,16 +3,16 @@
     import { onMount } from "svelte";
     import * as d3 from "d3";
 
+    import { parserStore } from "$lib/stores/parser";
+    import { dataSettingsStore } from "$lib/stores/datasettings";
+    import { revisionsStore, hasRevisionsStore } from "$lib/stores/revisions";
+
     import * as utils from "$lib/components/utils";
     import { queryConfig } from "$lib/config";
 
     import DataOptions from "./DataOptions.svelte";
 
-    let {
-        revisions = $bindable(),
-        dataOptions = $bindable(),
-        ...props
-    } = $props();
+    let { ...props } = $props();
 
     // Visualisation variables
     const id = props.id;
@@ -34,26 +34,18 @@
     let svg = undefined;
     let titleEl = undefined;
 
-    // Todo move this to a utils file
-    const transformInputData = ({
-        allowMinors = true,
-        allowUnknownEditors = true,
-        filterMinValue = 0,
-    }) => {
+    const transformInputData = () => {
         // Transform input data for internal usage
-        if (!revisions) return;
-        revs = revisions.slice();
+        if (!$hasRevisionsStore) return;
+        let revs = $revisionsStore.revisions.slice();
 
-        revs = revs.filter((r) => r.delta);
-        if (!allowMinors) {
+        if (!$dataSettingsStore.allowMinors) {
             revs = revs.filter((r) => !r.minor);
         }
-        if (!allowUnknownEditors) {
+        if (!$dataSettingsStore.allowUnknownEditors) {
             revs = revs.filter((r) => !r.user.name.startsWith("~"));
         }
-        revs = revs.map((d) => ({ ...d, delta: Math.abs(d.delta) }));
-        revs = revs.sort((a, b) => a.timestamp - b.timestamp);
-        console.log(revs);
+        return revs.sort((a, b) => a.timestamp - b.timestamp);
     };
 
     // Line generator
@@ -69,7 +61,7 @@
     let line = area.lineY1();
 
     onMount(() => {
-        transformInputData(dataOptions);
+        revs = transformInputData();
 
         svg = d3
             .select(`div#${id}`)
@@ -82,10 +74,6 @@
             .ease(d3.easeExpInOut)
             .attr("height", height)
             .attr("viewBox", [0, 0, width, height]);
-
-        d3.select(`h3#${id}`).html(
-            `Article size of '${props.result.title.replaceAll("_", " ")}' in the ${props.result.lang}-Wikipedia`,
-        );
 
         svg.append("g")
             .attr("id", idHandler.register("g", "gx"))
@@ -156,10 +144,14 @@
     });
 
     const update = () => {
-        transformInputData(dataOptions);
+        revs = transformInputData();
 
         x.domain(d3.extent(revs, (d) => d.timestamp));
-        y.domain([0, d3.max(revs, (d) => Math.abs(d.size))]);
+        y.domain([0, d3.max(revs, (d) => d.size)]);
+
+        d3.select(`h3#${id}`).html(
+            `Article size of '${$parserStore.title.replaceAll("_", " ")}' in the ${$parserStore.lang}-Wikipedia`,
+        );
 
         d3.select(idHandler.selector("g", "gx")).call(
             d3
@@ -168,7 +160,9 @@
                 .tickSizeOuter(0),
         );
 
-        d3.select(idHandler.selector("g", "gy")).call(d3.axisLeft(y));
+        d3.select(idHandler.selector("g", "gy")).call(
+            d3.axisLeft(y).ticks(height / 80),
+        );
 
         var container = d3.select(idHandler.selector("g", "container"));
 
@@ -213,8 +207,9 @@
             );
     };
 
+    // @ts-ignore
     $effect(() => {
-        if (revisions) {
+        if ($hasRevisionsStore) {
             update();
         }
     });

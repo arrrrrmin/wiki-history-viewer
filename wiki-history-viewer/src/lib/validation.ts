@@ -6,10 +6,10 @@ import * as errors from "./validation.errors";
 
 
 export type WikipediaLang =
-    | 'en' | 'fr' | 'de' | 'es' | 'it' | 'pt' | 'ru' | 'ja' | 'zh' | 'ar' | 'simple';
+    | 'en' | 'fr' | 'de' | 'es' | 'it' | 'pt' | 'ru' | 'ja' | 'zh' | 'ar';
 
 const WIKIPEDIA_LANGS: Set<WikipediaLang> = new Set([
-    'en', 'fr', 'de', 'es', 'it', 'pt', 'ru', 'ja', 'zh', 'ar', 'simple'
+    'en', 'fr', 'de', 'es', 'it', 'pt', 'ru', 'ja', 'zh', 'ar'
 ]);
 
 
@@ -18,7 +18,7 @@ export type WikiUrlParts = {
     title: string;
 }
 
-export function parseWikipediaUrl(input: string): WikiUrlParts { //throws WikipediaUrlError
+export function parseWikipediaUrl(input: string): WikiUrlParts {
     let url = null;
     try {
         url = new URL(input.trim());
@@ -47,10 +47,6 @@ export function parseWikipediaUrl(input: string): WikiUrlParts { //throws Wikipe
     const rawTitle = url.pathname.slice('/wiki/'.length);
     if (!rawTitle) throw new errors.PathnameError();
     const title = decodeURIComponent(rawTitle);
-
-    /** Todo check if the found title exists as wikimedia core api entry
-     *  If not `throw errors.TitleNotFoundError;`
-     */
 
     return { lang, title };
 }

@@ -1,10 +1,12 @@
+import { revisionsStore } from "$lib/stores/revisions";
+
+
 const USERAGENT_NAME = "WikiHistoryViewer/1.0"
 const USERAGENT_MAIL_ALIAS = "wikihistoryview.reload331@passinbox.com";
 const DEFAULT_HEADERS = {
     'Accept': 'application/json',
     'Api-User-Agent': `${USERAGENT_NAME} (${USERAGENT_MAIL_ALIAS})`
 }
-
 
 export interface WikimediaUser {
     id: number;
@@ -28,18 +30,6 @@ export interface WikimediaHistoryResponse {
     newer: string;
 }
 
-export async function fetchPageHistoryOnce(lang: string, title: string) {
-    const endpoint = `https://api.wikimedia.org/core/v1/wikipedia/${lang}/page/${encodeURIComponent(title)}/history`;
-
-    const res = await fetch(endpoint, { headers: DEFAULT_HEADERS });
-
-    if (!res.ok) {
-        throw new Error(`Wikimedia API error: ${res.status} ${res.statusText}`);
-    }
-
-    return res.json();
-}
-
 function sleep(ms: number, signal?: AbortSignal) {
     return new Promise<void>((resolve, reject) => {
         const id = setTimeout(() => resolve(), ms);
@@ -52,14 +42,26 @@ function sleep(ms: number, signal?: AbortSignal) {
     });
 }
 
+async function fetchNextBatch(
+    input: RequestInfo | URL, init?: RequestInit
+): Promise<{ revisions: WikimediaRevision[], continueKey: (string | null) }> {
+    const res = (await fetch(input, init));
+    if (!res.ok) {
+        throw new Error(`Wikimedia API error: ${res.status} ${res.statusText}`);
+    }
+    let data = (await res.json()) as WikimediaHistoryResponse
+    return { revisions: data.revisions, continueKey: data.older };
+}
+
 export async function* fetchPageHistoryPaginated(
     lang: string,
     title: string,
     maxPages = 10,
     delayMs = 250,
     signal?: AbortSignal,
-    endpoint?: string,
 ) {
+    let endpoint: string | null = null;
+    revisionsStore.subscribe(state => { endpoint = state.continueKey; });
     if (!endpoint) {
         endpoint = `https://api.wikimedia.org/core/v1/wikipedia/${lang}/page/${encodeURIComponent(title)}/history`;
     }
@@ -67,27 +69,15 @@ export async function* fetchPageHistoryPaginated(
 
     while (endpoint && pageCount < maxPages) {
         if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
+        let { revisions, continueKey } = await fetchNextBatch(endpoint, { headers: DEFAULT_HEADERS, signal });
+        revisionsStore.append(revisions, continueKey)
 
-        const res = await fetch(endpoint, { headers: DEFAULT_HEADERS, signal });
-
-        if (!res.ok) {
-            throw new Error(`Wikimedia API error: ${res.status} ${res.statusText}`);
-        }
-
-        let data = (await res.json()) as WikimediaHistoryResponse;
-        data.revisions = data.revisions.map(r => ({ ...r, timestamp: new Date(r.timestamp) })).filter(r => r.user.name && r.user.id);
-        console.log("New batch queried")
         // Yield this batch immediately
-        yield { revisions: data.revisions, endpoint: data.older };
+        yield { revisions, continueKey };
+        await sleep(delayMs);
 
-        // Prepare the next page URL if available
-        if (data.older) {
-            endpoint = data.older;
-            await sleep(delayMs);
-        } else {
-            endpoint = '';
-        }
-
+        // Update loop condition variables
+        revisionsStore.subscribe(state => { endpoint = state.continueKey; });
         pageCount++;
     }
 }
