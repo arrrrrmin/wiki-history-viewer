@@ -1,3 +1,7 @@
+import { isMobileStore } from "$lib/stores/mobile";
+import * as d3 from "d3";
+import { queryConfig } from "$lib/config";
+
 type ElementKey = string;
 type ElementType = string;
 
@@ -43,3 +47,16 @@ export class IdHandler {
         return `${elementType}#${id}`;
     }
 }
+
+export const getDependentWidth = () => {
+    let isMobile = false;
+    isMobileStore.subscribe(state => { isMobile = state });
+    if (isMobile) {
+        return 700;
+    }
+    return 1200;
+}
+
+export const setAxisText = (g: any, size: string | number | boolean | readonly (string | number)[] | d3.ValueFn<d3.BaseType, unknown, string | number | boolean | readonly (string | number)[] | null> | null) => {
+    return g.selectAll("text").attr("font-size", size);
+};
