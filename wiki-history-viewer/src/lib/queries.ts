@@ -1,5 +1,5 @@
 import { revisionsStore } from "$lib/stores/revisions";
-
+import mockData from "../mocks/api-response.json";
 
 const USERAGENT_NAME = "WikiHistoryViewer/1.0"
 const USERAGENT_MAIL_ALIAS = "wikihistoryview.reload331@passinbox.com";
@@ -7,6 +7,7 @@ const DEFAULT_HEADERS = {
     'Accept': 'application/json',
     'Api-User-Agent': `${USERAGENT_NAME} (${USERAGENT_MAIL_ALIAS})`
 }
+const useMock = __MOCK_RESPONSE__ === 'true';
 
 export interface WikimediaUser {
     id: number;
@@ -43,8 +44,15 @@ function sleep(ms: number, signal?: AbortSignal) {
 }
 
 async function fetchNextBatch(
-    input: RequestInfo | URL, init?: RequestInit
+    input: RequestInfo | URL, init?: RequestInit, pageCount?: number
 ): Promise<{ revisions: WikimediaRevision[], continueKey: (string | null) }> {
+    if (useMock && pageCount) {
+        const mockedResponse = mockData["responses"][pageCount];
+        let revisions = mockedResponse["revisions"].map(d => ({ ...d, timestamp: new Date(d.timestamp) } as WikimediaRevision));
+        let continueKey = mockedResponse["older"];
+        return { revisions, continueKey }
+    }
+
     const res = (await fetch(input, init));
     if (!res.ok) {
         throw new Error(`Wikimedia API error: ${res.status} ${res.statusText}`);
@@ -69,7 +77,7 @@ export async function* fetchPageHistoryPaginated(
 
     while (endpoint && pageCount < maxPages) {
         if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
-        let { revisions, continueKey } = await fetchNextBatch(endpoint, { headers: DEFAULT_HEADERS, signal });
+        let { revisions, continueKey } = await fetchNextBatch(endpoint, { headers: DEFAULT_HEADERS, signal }, pageCount);
         revisionsStore.append(revisions, continueKey)
 
         // Yield this batch immediately

@@ -7,4 +7,7 @@ export default defineConfig({
     tailwindcss(),
     sveltekit(),
   ],
+  define: {
+    __MOCK_RESPONSE__: JSON.stringify(process.env.MOCK_RESPONSE || false)
+  }
 });
