@@ -218,8 +218,6 @@
             <DataOptions />
             <Simpleline id="revoverview" isMobile={$isMobileStore} />
             <UserStats bind:input={input}/>
-            <!-- <UserActivity id="revuseractiv" /> -->
         </div>
-        <!-- <RevisionTable /> -->
     {/if}
 </main>
