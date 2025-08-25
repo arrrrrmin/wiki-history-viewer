@@ -7,7 +7,7 @@
         revisionsStore,
         isLoadingStore,
     } from "$lib/stores/revisions";
-    import { errorStore, hasErrorStore } from "$lib/stores/errors";
+    import { errorStore } from "$lib/stores/errors";
     import { parserStore, hasParsedStore } from "$lib/stores/parser";
     import { dataSettingsStore } from "$lib/stores/datasettings";
     import { isMobileStore } from "$lib/stores/mobile";
@@ -17,7 +17,7 @@
     import { projectConfig, queryConfig } from "$lib/config";
     import WarningMessage from "$lib/components/WarningMessage.svelte";
     import DataOptions from "$lib/components/DataOptions.svelte";
-    import Simpleline from "$lib/components/Simpleline.svelte";
+    import Simpleline from "$lib/d3js/Simpleline.svelte";
     import UserStats from "$lib/components/UserStats.svelte";
 
     let input: string = $state("");

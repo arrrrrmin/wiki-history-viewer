@@ -8,7 +8,7 @@
     import { dataSettingsStore } from "$lib/stores/datasettings";
     import { isMobileStore } from "$lib/stores/mobile";
 
-    import * as utils from "$lib/components/utils";
+    import * as utils from "$lib/d3js/utils";
     import { queryConfig } from "$lib/config";
 
     let { dataOptions = $bindable(), ...props } = $props();

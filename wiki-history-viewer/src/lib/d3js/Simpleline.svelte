@@ -8,7 +8,7 @@
     import { revisionsStore, hasRevisionsStore } from "$lib/stores/revisions";
     import { isMobileStore } from "$lib/stores/mobile";
 
-    import * as utils from "$lib/components/utils";
+    import * as utils from "$lib/d3js/utils";
     import { queryConfig } from "$lib/config";
 
     import DataOptions from "./DataOptions.svelte";

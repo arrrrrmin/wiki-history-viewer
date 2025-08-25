@@ -1,6 +1,6 @@
 import { expect, suite, test } from 'vitest'
 
-import { IdHandler } from '../src/lib/components/utils';
+import { IdHandler } from '../src/lib/d3js/utils';
 
 
 suite('settingIds', () => {
