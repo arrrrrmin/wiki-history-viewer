@@ -5,6 +5,7 @@ import * as d3 from "d3";
 import type { WikimediaRevision } from "$lib/queries";
 
 import { dataSettingsStore } from "$lib/stores/datasettings";
+import { dev } from "$app/environment";
 
 
 export interface RevisionsState {
@@ -46,6 +47,10 @@ function createRevisionsStore() {
                     ...state.revisions,
                     ...newBatch
                 ];
+
+                if (dev) {
+                    console.log(merged);
+                }
 
                 merged.sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
                 

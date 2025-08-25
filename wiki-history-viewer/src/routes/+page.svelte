@@ -19,6 +19,7 @@
     import DataOptions from "$lib/components/DataOptions.svelte";
     import Simpleline from "$lib/d3js/Simpleline.svelte";
     import UserStats from "$lib/components/UserStats.svelte";
+    import Download from "$lib/components/Download.svelte";
 
     let input: string = $state("");
 
@@ -205,6 +206,7 @@
         <div class="mx-auto mt-8 max-w-6xl border-t-1 border-gray-200">
             <DataOptions />
             <Simpleline id="revoverview" isMobile={$isMobileStore} />
+            <Download />
             <UserStats bind:input />
         </div>
     {/if}

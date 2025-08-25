@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 
 import { SvelteKitAuth } from "@auth/sveltekit"
 import Wikimedia from "@auth/sveltekit/providers/wikimedia"
@@ -23,5 +24,6 @@ export const { handle, signIn, signOut } = SvelteKitAuth(
                 return session;
             },
         },
+        debug: dev,
     } satisfies AuthConfig,
 );

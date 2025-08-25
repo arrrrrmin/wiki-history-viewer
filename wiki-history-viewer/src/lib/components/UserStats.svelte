@@ -18,7 +18,7 @@
 <div class="m-auto max-w-4xl py-4 px-4 sm:px-6 lg:px-8">
     <!-- svelte-ignore a11y_missing_content -->
     <h3 class="text-xl md:text-2xl font-semibold text-gray-900">
-        Users writing on this article
+        User Activity Leaderboard
     </h3>
 </div>
 <ul
