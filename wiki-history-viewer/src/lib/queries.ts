@@ -85,6 +85,7 @@ const constructHeader = () => {
 }
 
 export async function* fetchPageHistoryPaginated(
+    project: string,
     lang: string,
     title: string,
     maxPages = 10,
@@ -94,7 +95,7 @@ export async function* fetchPageHistoryPaginated(
     let endpoint: string | null = null;
     revisionsStore.subscribe(state => { endpoint = state.continueKey; });
     if (!endpoint) {
-        endpoint = `https://api.wikimedia.org/core/v1/wikipedia/${lang}/page/${encodeURIComponent(title)}/history`;
+        endpoint = `https://api.wikimedia.org/core/v1/${project}/${lang}/page/${encodeURIComponent(title)}/history`;
     }
     let pageCount = 0;
 
@@ -111,5 +112,60 @@ export async function* fetchPageHistoryPaginated(
         // Update loop condition variables
         revisionsStore.subscribe(state => { endpoint = state.continueKey; });
         pageCount++;
+    }
+}
+
+export interface CountResponse {
+    type: string;
+    count: number;
+    limit: boolean;
+}
+
+export interface PageStatistics {
+    anonymous: CountResponse | null; // Limit: 10,000
+    bot: CountResponse | null; // Limit: 10,000
+    editors: CountResponse | null; // Limit: 25,000
+    edits: CountResponse | null; // Limit: 30,000
+    minor: CountResponse | null; // Limit: 1,000
+    reverted: CountResponse | null; // Limit: 30,000
+}
+
+
+async function fetchStatistic(
+    typeKey: string,
+    project: string,
+    lang: string,
+    title: string,
+    signal?: AbortSignal
+) {
+    let endpoint = `https://api.wikimedia.org/core/v1/${project}/${lang}/page/${encodeURIComponent(title)}/history/counts/${typeKey}`;
+    let res = (await fetch(
+        endpoint,
+        { headers: constructHeader(), signal }
+    ))
+    let data = (await res.json()) as CountResponse
+    return data;
+}
+
+
+export async function fetchPageStatistics(
+    project: string,
+    lang: string,
+    title: string,
+    signal?: AbortSignal,
+) {
+    let results: CountResponse[] = [];
+    for (const typeKey of ['anonymous', 'bot', 'editors', 'edits', 'minor', 'reverted']) {
+        const data = await fetchStatistic(typeKey, project, lang, title, signal)
+        results.push({ ...data, type: typeKey })
+    };
+    if (!(results.length === 6)) throw new Error('Something went wrong when querying the API for base stats.');
+    return {
+        anonymous: results[0],
+        bot: results[1],
+        editors: results[2],
+        edits: results[3],
+        minor: results[4],
+        reverted: results[5]
     }
 }

@@ -18,7 +18,14 @@
             <p
                 class="mt-1 md:mt-2 pb-4 md:pb-4 max-w-4xl text-sm md:text-base text-gray-700"
             >
-                You can also download the data for local usage or analysis.
+                You can also download the data for local usage, further analysis
+                or to build you'r own plots for example in <a
+                    class="underline text-indigo-500"
+                    target="_blank"
+                    href="https://www.datawrapper.de">Datawrapper</a
+                > or some other tool that you publish with. No matter the format,
+                when you download filters are ignored and you'll download all the
+                available data that you queried.
             </p>
         </div>
         <div class="flex gap-x-2">
