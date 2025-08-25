@@ -1,12 +1,13 @@
+import { isLoggedIn, userStore } from "$lib/stores/user";
 import { revisionsStore } from "$lib/stores/revisions";
 import mockData from "../mocks/api-response.json";
+import { WikimediaAPIAccountError } from "./validation.errors";
+import { parserStore } from "./stores/parser";
 
 const USERAGENT_NAME = "WikiHistoryViewer/1.0"
 const USERAGENT_MAIL_ALIAS = "wikihistoryview.reload331@passinbox.com";
-const DEFAULT_HEADERS = {
-    'Accept': 'application/json',
-    'Api-User-Agent': `${USERAGENT_NAME} (${USERAGENT_MAIL_ALIAS})`
-}
+
+//@ts-ignore
 const useMock = __MOCK_RESPONSE__ === 'true';
 
 export interface WikimediaUser {
@@ -46,19 +47,41 @@ function sleep(ms: number, signal?: AbortSignal) {
 async function fetchNextBatch(
     input: RequestInfo | URL, init?: RequestInit, pageCount?: number
 ): Promise<{ revisions: WikimediaRevision[], continueKey: (string | null) }> {
-    if (useMock && pageCount) {
+
+    if (useMock && pageCount !== undefined) {
         const mockedResponse = mockData["responses"][pageCount];
         let revisions = mockedResponse["revisions"].map(d => ({ ...d, timestamp: new Date(d.timestamp) } as WikimediaRevision));
         let continueKey = mockedResponse["older"];
         return { revisions, continueKey }
+    } else {
+        const res = (await fetch(input, init));
+        if (!res.ok) {
+            let username;
+            userStore.subscribe((state) => username = state?.name)
+            let lang;
+            let project;
+            parserStore.subscribe((state) => {
+                lang = state?.lang;
+                project = state?.project;
+            })
+            throw new WikimediaAPIAccountError(username, project, lang)
+        }
+        let data = (await res.json()) as WikimediaHistoryResponse
+        return { revisions: data.revisions, continueKey: data.older };
     }
+}
 
-    const res = (await fetch(input, init));
-    if (!res.ok) {
-        throw new Error(`Wikimedia API error: ${res.status} ${res.statusText}`);
+const constructHeader = () => {
+    let token;
+    userStore.subscribe(state => { token = state?.access_token as string });
+    let headers: Record<string, string> = {
+        'Accept': 'application/json',
+        'Api-User-Agent': `${USERAGENT_NAME} (${USERAGENT_MAIL_ALIAS})`
+    };
+    if (isLoggedIn && token) {
+        headers['Authorization'] = `Bearer ${token}`
     }
-    let data = (await res.json()) as WikimediaHistoryResponse
-    return { revisions: data.revisions, continueKey: data.older };
+    return headers;
 }
 
 export async function* fetchPageHistoryPaginated(
@@ -77,7 +100,8 @@ export async function* fetchPageHistoryPaginated(
 
     while (endpoint && pageCount < maxPages) {
         if (signal?.aborted) throw new DOMException('Aborted', 'AbortError');
-        let { revisions, continueKey } = await fetchNextBatch(endpoint, { headers: DEFAULT_HEADERS, signal }, pageCount);
+
+        let { revisions, continueKey } = await fetchNextBatch(endpoint, { headers: constructHeader(), signal }, pageCount);
         revisionsStore.append(revisions, continueKey)
 
         // Yield this batch immediately

@@ -1,28 +1,52 @@
 <script lang="ts">
-    let { ...props } = $props();
+    import { hasErrorStore, errorStore } from "$lib/stores/errors";
+    import { WikimediaAPIAccountError } from "$lib/validation.errors";
 </script>
 
-<div class="border-l-4 border-yellow-400 bg-yellow-50 p-4">
-    <div class="flex">
-        <div class="shrink-0">
-            <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                data-slot="icon"
-                aria-hidden="true"
-                class="size-5 text-yellow-400"
-            >
-                <path
-                    d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-                    clip-rule="evenodd"
-                    fill-rule="evenodd"
-                />
-            </svg>
+<div>
+    {#if $hasErrorStore}
+        <div class="pt-2">
+            <div class="border-l-4 border-yellow-400 bg-yellow-50 p-4">
+                <div class="flex">
+                    <div class="shrink-0">
+                        <svg
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            data-slot="icon"
+                            aria-hidden="true"
+                            class="size-5 text-yellow-400"
+                        >
+                            <path
+                                d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495ZM10 5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 10 5Zm0 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
+                                clip-rule="evenodd"
+                                fill-rule="evenodd"
+                            />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-yellow-700">
+                            {#if $errorStore instanceof WikimediaAPIAccountError}
+                                Account mismatch. Your account <b
+                                    >{$errorStore.username}'</b
+                                >
+                                is unknown to {$errorStore.lang}.{$errorStore.project}.
+                                Use your account and log into
+                                <a
+                                    class="underline hover:text-yellow-900"
+                                    target="_blank"
+                                    href="https://{$errorStore.lang}.{$errorStore.project}.org"
+                                    >https://{$errorStore.lang}.{$errorStore.project}.org</a
+                                >
+                                You only have to do this once. After you'r first
+                                login all queries for {$errorStore.lang}/{$errorStore.project}
+                                will run fine.
+                            {:else}
+                                {$errorStore?.message}
+                            {/if}
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="ml-3">
-            <p class="text-sm text-yellow-700">
-                {props.message}
-            </p>
-        </div>
-    </div>
+    {/if}
 </div>

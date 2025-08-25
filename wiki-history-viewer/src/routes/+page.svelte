@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { parseWikipediaUrl, type WikiUrlParts } from "$lib/validation";
+    import { onDestroy } from "svelte";
+
+    import { parseWikipediaUrl } from "$lib/validation";
     import {
         hasRevisionsStore,
         revisionsStore,
@@ -7,19 +9,15 @@
     } from "$lib/stores/revisions";
     import { errorStore, hasErrorStore } from "$lib/stores/errors";
     import { parserStore, hasParsedStore } from "$lib/stores/parser";
+    import { dataSettingsStore } from "$lib/stores/datasettings";
     import { isMobileStore } from "$lib/stores/mobile";
 
     import * as errors from "$lib/validation.errors";
-    import {
-        fetchPageHistoryPaginated,
-        // type WikimediaRevision,
-    } from "$lib/queries";
+    import { fetchPageHistoryPaginated } from "$lib/queries";
     import { projectConfig, queryConfig } from "$lib/config";
-    import { onDestroy } from "svelte";
     import WarningMessage from "$lib/components/WarningMessage.svelte";
     import DataOptions from "$lib/components/DataOptions.svelte";
     import Simpleline from "$lib/components/Simpleline.svelte";
-    import { dataSettingsStore } from "$lib/stores/datasettings";
     import UserStats from "$lib/components/UserStats.svelte";
 
     let input: string = $state("");
@@ -29,17 +27,17 @@
     function parseAction() {
         try {
             const parts = parseWikipediaUrl(input);
-            parserStore.setParsed(parts.lang, parts.title);
+            parserStore.setParsed(parts.lang, parts.project, parts.title);
             errorStore.reset();
         } catch (err) {
             if (err instanceof errors.WikipediaUrlError) {
-                errorStore.setError(err.message);
+                errorStore.setError(err);
             } else {
                 // This could be send to a custom API endpoint for analytics purposes
                 console.log("Unhandled error occured");
                 console.log(err);
                 errorStore.setError(
-                    "Ok, sorry haven't seen this type of url so far.",
+                    new errors.WikipediaUrlError(`Unknown error: ${err}`),
                 );
             }
             parserStore.reset();
@@ -63,10 +61,12 @@
             )) {
             }
         } catch (err) {
-            if (err instanceof Error) {
-                errorStore.setError(err.message);
+            if (err instanceof errors.WikipediaUrlError) {
+                errorStore.setError(err);
             } else {
-                errorStore.setError(String(err));
+                errorStore.setError(
+                    new errors.WikipediaUrlError(`Unknown error: ${err}`),
+                );
             }
         } finally {
             revisionsStore.setLoading(false);
@@ -108,14 +108,6 @@
     });
 </script>
 
-<header>
-    <div class="mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
-        <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
-            {projectConfig.title}
-        </h1>
-        <p class="text-xl/6 md:text-2xl/12">{projectConfig.description}</p>
-    </div>
-</header>
 <main class="pt-4 md:pt-8 bg-white">
     <div class="mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
         <h3 class="text-lg md:text-xl font-semibold text-gray-900">Usage</h3>
@@ -158,7 +150,7 @@
                     </label>
 
                     <input
-                        id="email"
+                        id="input"
                         type="url"
                         name="input"
                         placeholder="Paste a Wikipedia URL"
@@ -207,17 +199,13 @@
                 </div>
             </form>
         </div>
-        {#if $hasErrorStore}
-            <div class="pt-2">
-                <WarningMessage message={$errorStore.message} />
-            </div>
-        {/if}
+        <WarningMessage />
     </div>
     {#if $hasParsedStore && $hasRevisionsStore}
         <div class="mx-auto mt-8 max-w-6xl border-t-1 border-gray-200">
             <DataOptions />
             <Simpleline id="revoverview" isMobile={$isMobileStore} />
-            <UserStats bind:input={input}/>
+            <UserStats bind:input />
         </div>
     {/if}
 </main>

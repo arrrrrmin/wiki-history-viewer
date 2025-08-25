@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"test": "vitest",
-		"dev": "MOCK_RESPONSE=true vite dev",
+		"dev": "DEBUG=auth*,@auth* MOCK_RESPONSE=true vite dev",
 		"dev:live": "MOCK_RESPONSE=false vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -25,6 +25,7 @@
 		"vitest": "^3.2.4"
 	},
 	"dependencies": {
+		"@auth/sveltekit": "^1.10.0",
 		"@tailwindcss/vite": "^4.1.12",
 		"@types/d3": "^7.4.3",
 		"d3": "^7.9.0",

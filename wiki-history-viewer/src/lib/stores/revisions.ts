@@ -41,14 +41,14 @@ function createRevisionsStore() {
             continueKey: string | null
         ) =>
             update(state => {
-                newBatch = newBatch.map(r => ({ ...r, timestamp: new Date(r.timestamp) })).filter(r => r.user.name && r.user.id);
+                newBatch = newBatch.map(r => ({ ...r, timestamp: new Date(r.timestamp) })) //.filter(r => r.user.name && r.user.id);
                 const merged: WikimediaRevision[] = [
                     ...state.revisions,
                     ...newBatch
                 ];
 
                 merged.sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
-
+                
                 return {
                     revisions: merged,
                     continueKey,

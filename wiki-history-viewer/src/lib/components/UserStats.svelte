@@ -3,7 +3,6 @@
 
     let { input = $bindable() } = $props();
     let url = new URL(input.trim());
-    console.log(url);
 
     const dateString = (d: Date): string => {
         return `${d.getFullYear()}/${d.getDate()}/${d.getMonth() + 1} ${d.getHours()}:${d.getMinutes()}`;
@@ -14,10 +13,6 @@
         const userPath = `User:${encodeURIComponent(user)}`;
         return `${url.origin}/${project}/${userPath}`;
     };
-
-    $effect(() => {
-        console.log($userRevisionsStore);
-    });
 </script>
 
 <div class="m-auto max-w-4xl py-4 px-4 sm:px-6 lg:px-8">
@@ -36,7 +31,9 @@
         >
             <div class="flex flex-1 flex-col p-3">
                 <dl class="mt-1 grid grid-col-1">
-                    <div class="flex gap-x-2 pb-1 items-baseline">
+                    <div
+                        class="flex gap-x-2 pb-1 items-baseline w-full truncate"
+                    >
                         <a
                             href={getUserSite(userRevisions.name)}
                             class="underline text-indigo-500 hover:text-gray-900 whitespace-nowrap"
