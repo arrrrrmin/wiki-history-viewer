@@ -1,7 +1,5 @@
 <script lang="ts">
     import { dataSettingsStore } from "$lib/stores/datasettings";
-
-    // All `setFilterMinValue` if needed, currently not used anyway
 </script>
 
 <div class="m-auto max-w-4xl mt-8 pb-6 px-4 sm:px-6 lg:px-8">
@@ -9,7 +7,7 @@
     <!-- allowMinors -->
     <div class="flex gap-3">
         <div
-            class="group relative inline-flex w-11 shrink-0 rounded-md bg-gray-200 p-0.5 outline-offset-2 outline-indigo-600 ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out has-[:checked]:bg-indigo-600 has-[:focus-visible]:outline has-[:focus-visible]:outline-2"
+            class="group relative inline-flex w-11 shrink-0 rounded-md bg-gray-200 p-0.5 outline-offset-2 outline-indigo-600 ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out has-[:checked]:bg-indigo-600 has-[:focus-visible]:outline"
         >
             <span
                 class="relative size-5 rounded-sm bg-white shadow-sm ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-[:checked]:translate-x-5"
@@ -68,7 +66,7 @@
     <!-- allowUnknownEditors -->
     <div class="flex gap-3 pt-2">
         <div
-            class="group relative inline-flex w-11 shrink-0 rounded-md bg-gray-200 p-0.5 outline-offset-2 outline-indigo-600 ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out has-[:checked]:bg-indigo-600 has-[:focus-visible]:outline has-[:focus-visible]:outline-2"
+            class="group relative inline-flex w-11 shrink-0 rounded-md bg-gray-200 p-0.5 outline-offset-2 outline-indigo-600 ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out has-[:checked]:bg-indigo-600 has-[:focus-visible]:outline"
         >
             <span
                 class="relative size-5 rounded-sm bg-white shadow-sm ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-[:checked]:translate-x-5"
