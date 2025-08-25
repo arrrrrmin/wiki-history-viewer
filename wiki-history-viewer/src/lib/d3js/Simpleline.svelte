@@ -11,8 +11,6 @@
     import * as utils from "$lib/d3js/utils";
     import { queryConfig } from "$lib/config";
 
-    import DataOptions from "./DataOptions.svelte";
-
     let { ...props } = $props();
 
     // Visualisation variables
