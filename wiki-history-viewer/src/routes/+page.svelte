@@ -72,7 +72,6 @@
                         controller.signal,
                     );
                 pageStatsStore.set(pageStatistics);
-                pageStatsStore.subscribe((state) => console.log(state));
             }
             for await (const _ of fetchPageHistoryPaginated(
                 $parserStore?.project!,
