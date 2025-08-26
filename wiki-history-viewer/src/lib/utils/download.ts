@@ -1,5 +1,10 @@
 import type { WikimediaRevision } from "$lib/queries";
 
+export function default_suffix() {
+    const dateParts = new Date().toISOString().replace(/\./, '').split('T');
+    return `${dateParts[0]}_${dateParts[1].replace(':', '')}`
+}
+
 /**Download a file and provide a download url.
  * 
  * @param data: Json stringified list of WikimediaRevision
@@ -24,9 +29,9 @@ export function downloadFile(data: string, filename: string, type: string) {
  */
 export function exportAsJSON(revisions?: WikimediaRevision[]) {
     if (!revisions) return;
+    console.log(revisions);
     const jsonString = JSON.stringify(revisions, null, 4);
-    const timestamp = new Date().toISOString().split('T')[0];
-    downloadFile(jsonString, `wikipedia_revisions_${timestamp}.json`, 'application/json');
+    downloadFile(jsonString, `wikipedia_revisions_${default_suffix()}.json`, 'application/json');
 }
 
 /** User exports a csv file for download from the queried data.
@@ -48,6 +53,5 @@ export function exportAsCSV(revisions?: WikimediaRevision[]) {
     ]);
 
     const csv = [header.join(','), ...rows.map(row => row.join(','))].join('\n');
-    const timestamp = new Date().toISOString().split('T')[0];
-    downloadFile(csv, `wikipedia_revisions_${timestamp}.csv`, 'text/csv');
+    downloadFile(csv, `wikipedia_revisions_${default_suffix()}.csv`, 'text/csv');
 }
