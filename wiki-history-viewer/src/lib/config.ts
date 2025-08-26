@@ -22,9 +22,9 @@ export const projectConfig: ProjectConfig = {
         name: "wiki-history-viewer"
     },
     author: "https://gravatar.com/defendorjoyfully5b71a1a62b",
-    credits: "This projects is build on top of an open API provided by the Wikimedia Foundation and the local wikipedias, which are founded by donations. So you could consider donating to the Wikimedia Foundation.",
+    credits: "This projects is build on top of an open API provided by the Wikimedia Foundation and fueled by regional wikipedias, which are founded by donations. So you could consider donating.",
     contact: "hello [at] arrrrrmin [dot] dev",
-    introduction: "Paste a valid wikipedia url into the input form and press submit. The first 200 revisions are loaded. Data is loaded from current to past data (left to right). If you need a larger context you can use the 'Load more'-button to load more data. If the API doesn't have more data you'll be visually notified and the button is disabled. When you'r submitting a new URL you'r data is lost and the diagram will reset."
+    introduction: "Paste a valid wikipedia url into the input form and press submit. The first 200 revisions are loaded. Data is loaded from current to past data (left to right). If you need a larger context you can use the 'Load more'-button as long as there is data. If the API doesn't have more data you'll be visually notified and the button is disabled. When you'r submitting a new URL you'r data is lost and the diagram will reset."
 };
 
 

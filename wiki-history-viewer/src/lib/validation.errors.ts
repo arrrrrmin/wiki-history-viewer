@@ -35,9 +35,23 @@ export class PathnameError extends WikipediaUrlError {
   }
 }
 
-export class TitleNotFoundError extends WikipediaUrlError {
-  constructor() {
-    super('The Wikipedia page title is missing or invalid.');
-    this.name = 'TitleNotFoundError';
+export class UnsupportedProjectError extends WikipediaUrlError {
+  constructor(url: string) {
+    super(`The url '${url}' includes an unsupported wikimedia project. Currently only 'wiki' (wikipedia) is supported.`);
+    this.name = 'UnsupportedProjectError';
+  }
+}
+
+export class WikimediaAPIAccountError extends WikipediaUrlError {
+  public username?: string;
+  public project?: string;
+  public lang?: string;
+
+  constructor(username?: string, project?: string, lang?: string) {
+    super(`Your Wikimedia account '${username}' us currently not loggin in to '${lang}/${project}'.`);
+    this.name = 'WikimediaAPIAccountError';
+    this.username = username;
+    this.project = project;
+    this.lang = lang;
   }
 }

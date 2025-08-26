@@ -5,7 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"test": "vitest",
-		"dev": "vite dev",
+		"dev": "DEBUG=auth*,@auth* MOCK_RESPONSE=true vite dev",
+		"dev:live": "MOCK_RESPONSE=false vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -13,9 +14,10 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^6.0.0",
+		"@sveltejs/adapter-netlify": "^5.2.2",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^6.0.0",
+		"@types/node": "^24.3.0",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
@@ -23,6 +25,7 @@
 		"vitest": "^3.2.4"
 	},
 	"dependencies": {
+		"@auth/sveltekit": "^1.10.0",
 		"@tailwindcss/vite": "^4.1.12",
 		"@types/d3": "^7.4.3",
 		"d3": "^7.9.0",

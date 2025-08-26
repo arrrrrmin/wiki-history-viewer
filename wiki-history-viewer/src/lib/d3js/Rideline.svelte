@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
     import * as d3 from "d3";
 
-    import { IdHandler } from "$lib/components/utils";
+    import { IdHandler } from "$lib/d3js/utils";
     import { queryConfig } from "$lib/config";
 
     let {

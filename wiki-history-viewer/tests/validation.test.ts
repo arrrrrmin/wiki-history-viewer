@@ -2,11 +2,11 @@ import { expect, suite, test } from 'vitest'
 
 
 import { parseWikipediaUrl } from '../src/lib/validation';
-import type { WikiUrlParts } from '../src/lib/validation';
+import type { WikimediaUrl } from '../src/lib/validation';
 
 
 suite('parseWikipediaUrl', () => {
-    const validCases: [string, WikiUrlParts][] = [
+    const validCases: [string, WikimediaUrl][] = [
         [
             'https://en.wikipedia.org/wiki/Albert_Einstein',
             { lang: 'en', title: 'Albert_Einstein' }

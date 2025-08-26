@@ -1,0 +1,1485 @@
+{
+    "responses": [
+        {
+            "revisions": [
+                {
+                    "id": 258108806,
+                    "timestamp": "2025-07-21T11:27:54Z",
+                    "minor": true,
+                    "size": 25002,
+                    "comment": "/* Schifffahrt */ Kausalität korrigiert",
+                    "user": {
+                        "id": 1304612,
+                        "name": "Güwy"
+                    },
+                    "delta": -2
+                },
+                {
+                    "id": 255718924,
+                    "timestamp": "2025-05-04T13:58:03Z",
+                    "minor": true,
+                    "size": 25004,
+                    "comment": "/* Nebenflüsse */",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -15
+                },
+                {
+                    "id": 255664321,
+                    "timestamp": "2025-05-02T17:15:04Z",
+                    "minor": false,
+                    "size": 25019,
+                    "comment": "Änderung [[Spezial:Diff/255644449|255644449]] von [[Special:Contribs/2001:9E8:C794:200:F1D8:F1B9:BD6C:12AF|2001:9E8:C794:200:F1D8:F1B9:BD6C:12AF]] rückgängig gemacht; die Steinzeit ist vorbei",
+                    "user": {
+                        "id": 256422,
+                        "name": "Thmsfrst"
+                    },
+                    "delta": -284
+                },
+                {
+                    "id": 255644449,
+                    "timestamp": "2025-05-02T08:23:53Z",
+                    "minor": false,
+                    "size": 25303,
+                    "comment": "Toter Link ersetzt und ergänzt",
+                    "user": {
+                        "id": null,
+                        "name": "2001:9E8:C794:200:F1D8:F1B9:BD6C:12AF"
+                    },
+                    "delta": 284
+                },
+                {
+                    "id": 248960450,
+                    "timestamp": "2024-09-28T07:30:32Z",
+                    "minor": false,
+                    "size": 25019,
+                    "comment": "lf",
+                    "user": {
+                        "id": 1379731,
+                        "name": "Roehrensee"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 248924930,
+                    "timestamp": "2024-09-26T20:02:07Z",
+                    "minor": true,
+                    "size": 25019,
+                    "comment": "Im Franz. gibt es keine langen Vokale. In bestimmten Positionen wird der Vokal manchmal lautschriftlich mit einem Längungszeichen in Klammern angegeben, da er von manchen Sprechern leicht gedehnt wird, aber es ist keinesfalls ein langer Vokal wie im Deutschen.",
+                    "user": {
+                        "id": 2333909,
+                        "name": "Jossiphon"
+                    },
+                    "delta": 2
+                },
+                {
+                    "id": 247905897,
+                    "timestamp": "2024-08-20T19:51:27Z",
+                    "minor": false,
+                    "size": 25017,
+                    "comment": "Kernkraftwerke nutzen Flüsse zur Kühlung, nicht zur Abkühlung.",
+                    "user": {
+                        "id": 119305,
+                        "name": "Rainer Klute"
+                    },
+                    "delta": -2
+                },
+                {
+                    "id": 246790967,
+                    "timestamp": "2024-07-15T20:29:50Z",
+                    "minor": false,
+                    "size": 25019,
+                    "comment": "bild eingefügt",
+                    "user": {
+                        "id": 114282,
+                        "name": "JEW"
+                    },
+                    "delta": 55
+                },
+                {
+                    "id": 237607674,
+                    "timestamp": "2023-09-24T16:59:31Z",
+                    "minor": false,
+                    "size": 24964,
+                    "comment": "soviel Latein kann doch selten einer",
+                    "user": {
+                        "id": 2234691,
+                        "name": "Georg Hügler"
+                    },
+                    "delta": -2
+                },
+                {
+                    "id": 236204811,
+                    "timestamp": "2023-08-07T15:45:11Z",
+                    "minor": true,
+                    "size": 24966,
+                    "comment": "/* Verlauf */ [[Benutzer:Aka/Tippfehler entfernt|Tippfehler entfernt]]",
+                    "user": {
+                        "id": 568,
+                        "name": "Aka"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 235187337,
+                    "timestamp": "2023-07-04T19:56:42Z",
+                    "minor": true,
+                    "size": 24966,
+                    "comment": "Änderungen von [[Special:Contributions/83.135.164.167|83.135.164.167]] ([[User talk:83.135.164.167|Diskussion]]) auf die letzte Version von [[:Benutzer:Invisigoth67|Invisigoth67]] zurückgesetzt",
+                    "user": {
+                        "id": 65998,
+                        "name": "Itti"
+                    },
+                    "delta": -16
+                },
+                {
+                    "id": 235187323,
+                    "timestamp": "2023-07-04T19:56:17Z",
+                    "minor": false,
+                    "size": 24982,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "83.135.164.167"
+                    },
+                    "delta": 16
+                },
+                {
+                    "id": 232272928,
+                    "timestamp": "2023-03-28T17:02:08Z",
+                    "minor": true,
+                    "size": 24966,
+                    "comment": "typo, form",
+                    "user": {
+                        "id": 178175,
+                        "name": "Invisigoth67"
+                    },
+                    "delta": 3
+                },
+                {
+                    "id": 232244965,
+                    "timestamp": "2023-03-27T18:13:00Z",
+                    "minor": false,
+                    "size": 24963,
+                    "comment": "/* Verlauf */",
+                    "user": {
+                        "id": null,
+                        "name": "2A02:1210:8CE3:D200:F830:A777:12F:27D1"
+                    },
+                    "delta": 995
+                },
+                {
+                    "id": 229139070,
+                    "timestamp": "2022-12-23T23:50:22Z",
+                    "minor": true,
+                    "size": 23968,
+                    "comment": "/* Loiretal */ Archivlink durch aktuellen Weblink ersetzt",
+                    "user": {
+                        "id": 292800,
+                        "name": "BrunoBoehmler"
+                    },
+                    "delta": 31
+                },
+                {
+                    "id": 229138995,
+                    "timestamp": "2022-12-23T23:43:26Z",
+                    "minor": true,
+                    "size": 23937,
+                    "comment": "/* Loiretal */ Weblink geprüft",
+                    "user": {
+                        "id": 292800,
+                        "name": "BrunoBoehmler"
+                    },
+                    "delta": 14
+                },
+                {
+                    "id": 228666568,
+                    "timestamp": "2022-12-08T05:53:23Z",
+                    "minor": false,
+                    "size": 23923,
+                    "comment": "[[:Benutzer:InternetArchiveBot|InternetArchiveBot]] hat 1 Archivlink(s) ergänzt und 0 Link(s) als defekt/tot markiert.) #IABot (v2.0.9.2",
+                    "user": {
+                        "id": 2458679,
+                        "name": "InternetArchiveBot"
+                    },
+                    "delta": 98
+                },
+                {
+                    "id": 225807520,
+                    "timestamp": "2022-09-01T06:28:28Z",
+                    "minor": true,
+                    "size": 23825,
+                    "comment": "Änderungen von [[Special:Contributions/83.137.7.248|83.137.7.248]] ([[User talk:83.137.7.248|Diskussion]]) auf die letzte Version von [[:Benutzer:RoBri|RoBri]] zurückgesetzt",
+                    "user": {
+                        "id": 886966,
+                        "name": "Hahnenkleer"
+                    },
+                    "delta": 10
+                },
+                {
+                    "id": 225807441,
+                    "timestamp": "2022-09-01T06:24:01Z",
+                    "minor": false,
+                    "size": 23815,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "83.137.7.248"
+                    },
+                    "delta": -10
+                },
+                {
+                    "id": 224224137,
+                    "timestamp": "2022-07-04T10:51:04Z",
+                    "minor": true,
+                    "size": 23825,
+                    "comment": "Revert: war richtig",
+                    "user": {
+                        "id": 13625,
+                        "name": "RoBri"
+                    },
+                    "delta": -2
+                }
+            ],
+            "latest": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history",
+            "older": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?older_than=224224137"
+        },
+        {
+            "revisions": [
+                {
+                    "id": 224223327,
+                    "timestamp": "2022-07-04T10:19:33Z",
+                    "minor": false,
+                    "size": 23827,
+                    "comment": "Tippfehler im IPA-System (Aussprache) korrigiert. Hier stand für das „lange o“ in „Loire“ ein „w“, das jedoch wie englisches „w-ater“ gesprochen wird",
+                    "user": {
+                        "id": null,
+                        "name": "2003:F7:B722:BA00:A1F8:5F73:3A83:6F02"
+                    },
+                    "delta": 2
+                },
+                {
+                    "id": 222977954,
+                    "timestamp": "2022-05-18T12:31:41Z",
+                    "minor": true,
+                    "size": 23825,
+                    "comment": "Änderungen von [[Special:Contributions/31.10.232.202|31.10.232.202]] ([[User talk:31.10.232.202|Diskussion]]) auf die letzte Version von [[:Benutzer:Blacky75|Blacky75]] zurückgesetzt",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 1
+                },
+                {
+                    "id": 222950891,
+                    "timestamp": "2022-05-17T12:15:24Z",
+                    "minor": false,
+                    "size": 23824,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "31.10.232.202"
+                    },
+                    "delta": -1
+                },
+                {
+                    "id": 222950855,
+                    "timestamp": "2022-05-17T12:14:10Z",
+                    "minor": false,
+                    "size": 23825,
+                    "comment": "Die letzte Textänderung von [[Spezial:Beiträge/31.10.232.202|31.10.232.202]] wurde verworfen und die Version [[Spezial:PermaLink/220726688|220726688]] von Staab.a wiederhergestellt.",
+                    "user": {
+                        "id": 267889,
+                        "name": "Blacky75"
+                    },
+                    "delta": -1
+                },
+                {
+                    "id": 222950811,
+                    "timestamp": "2022-05-17T12:12:20Z",
+                    "minor": false,
+                    "size": 23826,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "31.10.232.202"
+                    },
+                    "delta": 1
+                },
+                {
+                    "id": 220726688,
+                    "timestamp": "2022-03-02T16:31:33Z",
+                    "minor": false,
+                    "size": 23825,
+                    "comment": "/* Loiretal */  Artikel detailliert",
+                    "user": {
+                        "id": 3886646,
+                        "name": "Staab.a"
+                    },
+                    "delta": 31
+                },
+                {
+                    "id": 219125176,
+                    "timestamp": "2022-01-13T09:37:23Z",
+                    "minor": false,
+                    "size": 23794,
+                    "comment": "Änderungen von [[Spezial:Beiträge/93.104.218.66|93.104.218.66]] ([[Benutzer Diskussion:93.104.218.66|Diskussion]]) rückgängig gemacht ([[Wikipedia:Huggle|HG]]) (3.4.10)",
+                    "user": {
+                        "id": 394876,
+                        "name": "Der.Traeumer"
+                    },
+                    "delta": -21
+                },
+                {
+                    "id": 219125163,
+                    "timestamp": "2022-01-13T09:36:50Z",
+                    "minor": false,
+                    "size": 23815,
+                    "comment": "lol",
+                    "user": {
+                        "id": null,
+                        "name": "93.104.218.66"
+                    },
+                    "delta": 21
+                },
+                {
+                    "id": 218570600,
+                    "timestamp": "2021-12-28T15:34:06Z",
+                    "minor": true,
+                    "size": 23794,
+                    "comment": "/* Nebenflüsse */",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -17
+                },
+                {
+                    "id": 218310175,
+                    "timestamp": "2021-12-18T21:32:41Z",
+                    "minor": true,
+                    "size": 23811,
+                    "comment": "/* Nebenflüsse */",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -16
+                },
+                {
+                    "id": 217892824,
+                    "timestamp": "2021-12-04T21:22:26Z",
+                    "minor": true,
+                    "size": 23827,
+                    "comment": "/* Nebenflüsse */",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -14
+                },
+                {
+                    "id": 217835142,
+                    "timestamp": "2021-12-03T06:24:16Z",
+                    "minor": true,
+                    "size": 23841,
+                    "comment": "/* Nebenflüsse */",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -15
+                },
+                {
+                    "id": 216787159,
+                    "timestamp": "2021-10-29T15:58:57Z",
+                    "minor": true,
+                    "size": 23856,
+                    "comment": "",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -15
+                },
+                {
+                    "id": 215204518,
+                    "timestamp": "2021-08-31T08:17:39Z",
+                    "minor": false,
+                    "size": 23871,
+                    "comment": "/* Loiretal */ ergänzt durch grundsätzliche Informationen aus dem englischsprachen Artikel (\"https://en.wikipedia.org/wiki/Loire_Valley\", 31.Aug.2021,10:16)",
+                    "user": {
+                        "id": 1893420,
+                        "name": "SpeckbaronDerZweite"
+                    },
+                    "delta": 196
+                },
+                {
+                    "id": 215116122,
+                    "timestamp": "2021-08-28T08:06:47Z",
+                    "minor": false,
+                    "size": 23675,
+                    "comment": "Änderung [[Spezial:Diff/215081436|215081436]] von [[Special:Contribs/Vatolin|Vatolin]] rückgängig gemacht; gibt es eine neuere lateinische Bezeichnung? Dass Latein tendenziell veraltet ist, muss nicht gesondert erwähnt werden.",
+                    "user": {
+                        "id": 1648354,
+                        "name": "Altsprachenfreund"
+                    },
+                    "delta": -9
+                },
+                {
+                    "id": 215081436,
+                    "timestamp": "2021-08-26T20:53:22Z",
+                    "minor": false,
+                    "size": 23684,
+                    "comment": "",
+                    "user": {
+                        "id": 329876,
+                        "name": "Vatolin"
+                    },
+                    "delta": 9
+                },
+                {
+                    "id": 212518424,
+                    "timestamp": "2021-05-30T13:50:38Z",
+                    "minor": false,
+                    "size": 23675,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 212510732,
+                    "timestamp": "2021-05-30T08:51:38Z",
+                    "minor": false,
+                    "size": 23675,
+                    "comment": "/* Nebenflüsse */ ft",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 212510688,
+                    "timestamp": "2021-05-30T08:50:16Z",
+                    "minor": false,
+                    "size": 23675,
+                    "comment": "/* Nebenflüsse */ lf",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 14
+                },
+                {
+                    "id": 212460231,
+                    "timestamp": "2021-05-28T13:48:01Z",
+                    "minor": false,
+                    "size": 23661,
+                    "comment": "/* Nebenflüsse */ +fluss",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 162
+                }
+            ],
+            "latest": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history",
+            "older": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?older_than=212460231",
+            "newer": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?newer_than=224223327"
+        },
+        {
+            "revisions": [
+                {
+                    "id": 212449223,
+                    "timestamp": "2021-05-28T08:04:36Z",
+                    "minor": false,
+                    "size": 23499,
+                    "comment": "/* Nebenflüsse */ km lt sandre",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 212415154,
+                    "timestamp": "2021-05-27T08:08:10Z",
+                    "minor": false,
+                    "size": 23499,
+                    "comment": "/* Nebenflüsse */ erg.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 161
+                },
+                {
+                    "id": 212311859,
+                    "timestamp": "2021-05-24T11:59:12Z",
+                    "minor": false,
+                    "size": 23338,
+                    "comment": "/* Nebenflüsse */ km",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 211813740,
+                    "timestamp": "2021-05-10T13:29:46Z",
+                    "minor": false,
+                    "size": 23338,
+                    "comment": "/* Nebenflüsse */ c",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 1
+                },
+                {
+                    "id": 211746608,
+                    "timestamp": "2021-05-08T16:47:41Z",
+                    "minor": false,
+                    "size": 23337,
+                    "comment": "/* Nebenflüsse */ erg.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 183
+                },
+                {
+                    "id": 211746120,
+                    "timestamp": "2021-05-08T16:29:55Z",
+                    "minor": false,
+                    "size": 23154,
+                    "comment": "/* Nebenflüsse */ Länge korr.lt sandre",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 1
+                },
+                {
+                    "id": 211745273,
+                    "timestamp": "2021-05-08T15:56:00Z",
+                    "minor": false,
+                    "size": 23153,
+                    "comment": "/* Nebenflüsse */ erg.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 168
+                },
+                {
+                    "id": 211386707,
+                    "timestamp": "2021-04-28T07:35:49Z",
+                    "minor": false,
+                    "size": 22985,
+                    "comment": "/* Nebenflüsse */ erg.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 175
+                },
+                {
+                    "id": 211255653,
+                    "timestamp": "2021-04-24T14:35:06Z",
+                    "minor": false,
+                    "size": 22810,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 211051981,
+                    "timestamp": "2021-04-18T09:13:37Z",
+                    "minor": false,
+                    "size": 22810,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 211030871,
+                    "timestamp": "2021-04-17T16:29:13Z",
+                    "minor": false,
+                    "size": 22810,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 211012773,
+                    "timestamp": "2021-04-17T07:54:57Z",
+                    "minor": false,
+                    "size": 22810,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 211012532,
+                    "timestamp": "2021-04-17T07:47:44Z",
+                    "minor": false,
+                    "size": 22810,
+                    "comment": "/* Nebenflüsse */ detto",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 211012474,
+                    "timestamp": "2021-04-17T07:45:50Z",
+                    "minor": false,
+                    "size": 22810,
+                    "comment": "/* Nebenflüsse */ detto",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 2
+                },
+                {
+                    "id": 211012444,
+                    "timestamp": "2021-04-17T07:44:20Z",
+                    "minor": false,
+                    "size": 22808,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 210990717,
+                    "timestamp": "2021-04-16T13:09:49Z",
+                    "minor": false,
+                    "size": 22808,
+                    "comment": "K",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 2
+                },
+                {
+                    "id": 210989455,
+                    "timestamp": "2021-04-16T12:26:01Z",
+                    "minor": false,
+                    "size": 22806,
+                    "comment": "http://www.sandre.eaufrance.fr/geo/CoursEau/----0000",
+                    "user": {
+                        "id": null,
+                        "name": "178.3.56.82"
+                    },
+                    "delta": 6
+                },
+                {
+                    "id": 210984568,
+                    "timestamp": "2021-04-16T09:44:08Z",
+                    "minor": false,
+                    "size": 22800,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 210984264,
+                    "timestamp": "2021-04-16T09:32:26Z",
+                    "minor": false,
+                    "size": 22800,
+                    "comment": "/* Nebenflüsse */ tab korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 23
+                },
+                {
+                    "id": 210983254,
+                    "timestamp": "2021-04-16T08:55:02Z",
+                    "minor": false,
+                    "size": 22777,
+                    "comment": "/* Nebenflüsse */ Länge korr.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                }
+            ],
+            "latest": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history",
+            "older": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?older_than=210983254",
+            "newer": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?newer_than=212449223"
+        },
+        {
+            "revisions": [
+                {
+                    "id": 210828565,
+                    "timestamp": "2021-04-11T16:08:18Z",
+                    "minor": false,
+                    "size": 22777,
+                    "comment": "erg.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 210828506,
+                    "timestamp": "2021-04-11T16:05:55Z",
+                    "minor": false,
+                    "size": 22777,
+                    "comment": "/* Nebenflüsse */ dd",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 210824538,
+                    "timestamp": "2021-04-11T13:59:01Z",
+                    "minor": false,
+                    "size": 22777,
+                    "comment": "/* Nebenflüsse */ erg.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 172
+                },
+                {
+                    "id": 210744155,
+                    "timestamp": "2021-04-09T13:49:39Z",
+                    "minor": false,
+                    "size": 22605,
+                    "comment": "/* Nebenflüsse */ doppelt",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": -166
+                },
+                {
+                    "id": 210743655,
+                    "timestamp": "2021-04-09T13:33:15Z",
+                    "minor": false,
+                    "size": 22771,
+                    "comment": "/* Nebenflüsse */ korr.lt sandre",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 210709225,
+                    "timestamp": "2021-04-08T15:56:33Z",
+                    "minor": false,
+                    "size": 22771,
+                    "comment": "/* Nebenflüsse */ korr. lt sandre",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 208432213,
+                    "timestamp": "2021-02-04T14:52:41Z",
+                    "minor": true,
+                    "size": 22771,
+                    "comment": "",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -15
+                },
+                {
+                    "id": 208409512,
+                    "timestamp": "2021-02-03T22:35:55Z",
+                    "minor": true,
+                    "size": 22786,
+                    "comment": "/* Nebenflüsse */",
+                    "user": {
+                        "id": 109051,
+                        "name": "Rauenstein"
+                    },
+                    "delta": -15
+                },
+                {
+                    "id": 205966149,
+                    "timestamp": "2020-11-26T19:41:52Z",
+                    "minor": true,
+                    "size": 22801,
+                    "comment": "Erklärung zur Tabelle klarer und kürzer",
+                    "user": {
+                        "id": 3606341,
+                        "name": "Skrachfehler"
+                    },
+                    "delta": -352
+                },
+                {
+                    "id": 202015992,
+                    "timestamp": "2020-07-19T12:34:51Z",
+                    "minor": true,
+                    "size": 23153,
+                    "comment": "/* Loire */ Stil",
+                    "user": {
+                        "id": 263607,
+                        "name": "MaxBE"
+                    },
+                    "delta": 2
+                },
+                {
+                    "id": 202007985,
+                    "timestamp": "2020-07-19T06:54:03Z",
+                    "minor": true,
+                    "size": 23151,
+                    "comment": "Änderungen von [[Special:Contributions/2003:EF:F72F:9C01:1CA7:52C5:CE12:C020|2003:EF:F72F:9C01:1CA7:52C5:CE12:C020]] ([[User talk:2003:EF:F72F:9C01:1CA7:52C5:CE12:C020|Diskussion]]) auf die letzte Version von [[:Benutzer:Aka|Aka]] zurückgesetzt",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": -14
+                },
+                {
+                    "id": 201997522,
+                    "timestamp": "2020-07-18T19:08:48Z",
+                    "minor": false,
+                    "size": 23165,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "2003:EF:F72F:9C01:1CA7:52C5:CE12:C020"
+                    },
+                    "delta": 14
+                },
+                {
+                    "id": 201040916,
+                    "timestamp": "2020-06-16T18:39:51Z",
+                    "minor": true,
+                    "size": 23151,
+                    "comment": "/* Bilder */ Leerzeichen bei Klammer entfernt",
+                    "user": {
+                        "id": 568,
+                        "name": "Aka"
+                    },
+                    "delta": -1
+                },
+                {
+                    "id": 197369177,
+                    "timestamp": "2020-03-03T09:49:13Z",
+                    "minor": true,
+                    "size": 23152,
+                    "comment": "Änderungen von [[Special:Beiträge/91.56.214.57|91.56.214.57]] ([[Benutzer Diskussion:91.56.214.57|Diskussion]]) rückgängig gemacht ([[WP:Huggle|HG]]) (3.4.9)",
+                    "user": {
+                        "id": 1381571,
+                        "name": "Johannnes89"
+                    },
+                    "delta": -73
+                },
+                {
+                    "id": 197369122,
+                    "timestamp": "2020-03-03T09:47:08Z",
+                    "minor": false,
+                    "size": 23225,
+                    "comment": "/* Wirtschaftliche Nutzung */",
+                    "user": {
+                        "id": null,
+                        "name": "91.56.214.57"
+                    },
+                    "delta": 73
+                },
+                {
+                    "id": 194768450,
+                    "timestamp": "2019-12-09T15:25:49Z",
+                    "minor": true,
+                    "size": 23152,
+                    "comment": "Tippfehler entfernt, deutsch, Kleinkram",
+                    "user": {
+                        "id": 568,
+                        "name": "Aka"
+                    },
+                    "delta": -5
+                },
+                {
+                    "id": 194749490,
+                    "timestamp": "2019-12-08T21:22:02Z",
+                    "minor": false,
+                    "size": 23157,
+                    "comment": "/* Nebenflüsse */ Dezimalkomma. Zebra für bessere Lesbarkeit. Div.",
+                    "user": {
+                        "id": 95389,
+                        "name": "Atc"
+                    },
+                    "delta": -86
+                },
+                {
+                    "id": 193013007,
+                    "timestamp": "2019-10-10T12:30:27Z",
+                    "minor": false,
+                    "size": 23243,
+                    "comment": "/* Bilder */",
+                    "user": {
+                        "id": 2605991,
+                        "name": "Philippe49730"
+                    },
+                    "delta": 1
+                },
+                {
+                    "id": 193012976,
+                    "timestamp": "2019-10-10T12:29:17Z",
+                    "minor": true,
+                    "size": 23242,
+                    "comment": "/* Bilder */",
+                    "user": {
+                        "id": 2605991,
+                        "name": "Philippe49730"
+                    },
+                    "delta": 66
+                },
+                {
+                    "id": 193012902,
+                    "timestamp": "2019-10-10T12:25:57Z",
+                    "minor": false,
+                    "size": 23176,
+                    "comment": "",
+                    "user": {
+                        "id": 2605991,
+                        "name": "Philippe49730"
+                    },
+                    "delta": 16
+                }
+            ],
+            "latest": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history",
+            "older": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?older_than=193012902",
+            "newer": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?newer_than=210828565"
+        },
+        {
+            "revisions": [
+                {
+                    "id": 192786516,
+                    "timestamp": "2019-10-02T10:34:24Z",
+                    "minor": true,
+                    "size": 23160,
+                    "comment": "Änderungen von [[Special:Contributions/84.173.211.83|84.173.211.83]] ([[User talk:84.173.211.83|Diskussion]]) auf die letzte Version von [[:Benutzer:InternetArchiveBot|InternetArchiveBot]] zurückgesetzt",
+                    "user": {
+                        "id": 1899074,
+                        "name": "Schnabeltassentier"
+                    },
+                    "delta": 183
+                },
+                {
+                    "id": 192786495,
+                    "timestamp": "2019-10-02T10:33:45Z",
+                    "minor": false,
+                    "size": 22977,
+                    "comment": "/* Loiretal */",
+                    "user": {
+                        "id": null,
+                        "name": "84.173.211.83"
+                    },
+                    "delta": -183
+                },
+                {
+                    "id": 192408672,
+                    "timestamp": "2019-09-19T20:32:12Z",
+                    "minor": false,
+                    "size": 23160,
+                    "comment": "[[:Benutzer:InternetArchiveBot|InternetArchiveBot]] hat 1 Archivlink(s) ergänzt und 0 Link(s) als defekt/tot markiert.) #IABot (v2.0",
+                    "user": {
+                        "id": 2458679,
+                        "name": "InternetArchiveBot"
+                    },
+                    "delta": 98
+                },
+                {
+                    "id": 192310576,
+                    "timestamp": "2019-09-16T17:47:51Z",
+                    "minor": true,
+                    "size": 23062,
+                    "comment": "Revert: [[WP:Q]]",
+                    "user": {
+                        "id": 13625,
+                        "name": "RoBri"
+                    },
+                    "delta": -370
+                },
+                {
+                    "id": 192310437,
+                    "timestamp": "2019-09-16T17:40:31Z",
+                    "minor": false,
+                    "size": 23432,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "80.71.142.166"
+                    },
+                    "delta": 370
+                },
+                {
+                    "id": 192286158,
+                    "timestamp": "2019-09-15T20:44:23Z",
+                    "minor": false,
+                    "size": 23062,
+                    "comment": "Die letzte Textänderung von [[Spezial:Beiträge/80.71.142.166|80.71.142.166]] wurde verworfen und die Version 190078417 von Julien45000 wiederhergestellt.",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": -370
+                },
+                {
+                    "id": 192265659,
+                    "timestamp": "2019-09-15T06:26:15Z",
+                    "minor": false,
+                    "size": 23432,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "80.71.142.166"
+                    },
+                    "delta": 370
+                },
+                {
+                    "id": 190078417,
+                    "timestamp": "2019-07-02T21:48:52Z",
+                    "minor": false,
+                    "size": 23062,
+                    "comment": "",
+                    "user": {
+                        "id": 2998796,
+                        "name": "Julien45000"
+                    },
+                    "delta": 1
+                },
+                {
+                    "id": 190078384,
+                    "timestamp": "2019-07-02T21:47:13Z",
+                    "minor": false,
+                    "size": 23061,
+                    "comment": "",
+                    "user": {
+                        "id": 2998796,
+                        "name": "Julien45000"
+                    },
+                    "delta": 51
+                },
+                {
+                    "id": 189911008,
+                    "timestamp": "2019-06-27T11:23:27Z",
+                    "minor": false,
+                    "size": 23010,
+                    "comment": "/* Loiretal */ https://de.wikipedia.org/wiki/Flussl%C3%A4ngsprofil",
+                    "user": {
+                        "id": 79032,
+                        "name": "Faulenzius Seltenda"
+                    },
+                    "delta": 12
+                },
+                {
+                    "id": 189910861,
+                    "timestamp": "2019-06-27T11:16:12Z",
+                    "minor": true,
+                    "size": 22998,
+                    "comment": "/* Verlauf */",
+                    "user": {
+                        "id": 79032,
+                        "name": "Faulenzius Seltenda"
+                    },
+                    "delta": 4
+                },
+                {
+                    "id": 189910844,
+                    "timestamp": "2019-06-27T11:15:30Z",
+                    "minor": true,
+                    "size": 22994,
+                    "comment": "/* Verlauf */",
+                    "user": {
+                        "id": 79032,
+                        "name": "Faulenzius Seltenda"
+                    },
+                    "delta": -1
+                },
+                {
+                    "id": 188504541,
+                    "timestamp": "2019-05-12T19:54:51Z",
+                    "minor": false,
+                    "size": 22995,
+                    "comment": "",
+                    "user": {
+                        "id": 3208302,
+                        "name": "Flow07160"
+                    },
+                    "delta": 4
+                },
+                {
+                    "id": 188504506,
+                    "timestamp": "2019-05-12T19:53:43Z",
+                    "minor": false,
+                    "size": 22991,
+                    "comment": "",
+                    "user": {
+                        "id": 3208302,
+                        "name": "Flow07160"
+                    },
+                    "delta": 105
+                },
+                {
+                    "id": 187890456,
+                    "timestamp": "2019-04-25T07:33:59Z",
+                    "minor": false,
+                    "size": 22886,
+                    "comment": "Änderung 187889516 von [[Special:Contribs/212.203.35.82|212.203.35.82]] rückgängig gemacht; Beleg? In der Auzählung im selben Absatz sind nur 4 aufgezählt.",
+                    "user": {
+                        "id": 3033335,
+                        "name": "Bicycle Tourer"
+                    },
+                    "delta": -5
+                },
+                {
+                    "id": 187889516,
+                    "timestamp": "2019-04-25T06:56:22Z",
+                    "minor": false,
+                    "size": 22891,
+                    "comment": "/* Nebenflüsse */",
+                    "user": {
+                        "id": null,
+                        "name": "212.203.35.82"
+                    },
+                    "delta": 5
+                },
+                {
+                    "id": 187550813,
+                    "timestamp": "2019-04-14T09:04:21Z",
+                    "minor": true,
+                    "size": 22886,
+                    "comment": "Normdaten ergänzt",
+                    "user": {
+                        "id": 565645,
+                        "name": "Wurgl"
+                    },
+                    "delta": 15
+                },
+                {
+                    "id": 186022667,
+                    "timestamp": "2019-02-25T13:55:54Z",
+                    "minor": true,
+                    "size": 22871,
+                    "comment": "Bot: Steuerzeichen ersetzt",
+                    "user": {
+                        "id": 1824919,
+                        "name": "TaxonBot"
+                    },
+                    "delta": -1
+                },
+                {
+                    "id": 186006566,
+                    "timestamp": "2019-02-24T21:56:43Z",
+                    "minor": false,
+                    "size": 22872,
+                    "comment": "veraltenden Parametersatz ABFLUSS* ersetzt durch PEGEL1*",
+                    "user": {
+                        "id": 494953,
+                        "name": "Silvicola"
+                    },
+                    "delta": 36
+                },
+                {
+                    "id": 185611367,
+                    "timestamp": "2019-02-12T10:08:43Z",
+                    "minor": true,
+                    "size": 22836,
+                    "comment": "Änderungen von [[Special:Contributions/77.20.208.9|77.20.208.9]] ([[User talk:77.20.208.9|Diskussion]]) auf die letzte Version von [[:Benutzer:Parvolus|Parvolus]] zurückgesetzt",
+                    "user": {
+                        "id": 1899074,
+                        "name": "Schnabeltassentier"
+                    },
+                    "delta": 1950
+                }
+            ],
+            "latest": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history",
+            "older": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?older_than=185611367",
+            "newer": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?newer_than=192786516"
+        },
+        {
+            "revisions": [
+                {
+                    "id": 185611359,
+                    "timestamp": "2019-02-12T10:08:24Z",
+                    "minor": false,
+                    "size": 20886,
+                    "comment": "/* Verlauf */",
+                    "user": {
+                        "id": null,
+                        "name": "77.20.208.9"
+                    },
+                    "delta": -1950
+                },
+                {
+                    "id": 185611339,
+                    "timestamp": "2019-02-12T10:07:36Z",
+                    "minor": true,
+                    "size": 22836,
+                    "comment": "Änderungen von [[Special:Contributions/77.20.208.9|77.20.208.9]] ([[User talk:77.20.208.9|Diskussion]]) auf die letzte Version von [[:Benutzer:Tanneneichhorn|Tanneneichhorn]] zurückgesetzt",
+                    "user": {
+                        "id": 2770113,
+                        "name": "Parvolus"
+                    },
+                    "delta": 4582
+                },
+                {
+                    "id": 185611326,
+                    "timestamp": "2019-02-12T10:07:13Z",
+                    "minor": false,
+                    "size": 18254,
+                    "comment": "/* Verlauf */",
+                    "user": {
+                        "id": null,
+                        "name": "77.20.208.9"
+                    },
+                    "delta": -4582
+                },
+                {
+                    "id": 182847608,
+                    "timestamp": "2018-11-17T22:18:52Z",
+                    "minor": true,
+                    "size": 22836,
+                    "comment": "+Link",
+                    "user": {
+                        "id": 693873,
+                        "name": "Tanneneichhorn"
+                    },
+                    "delta": 4
+                },
+                {
+                    "id": 182581163,
+                    "timestamp": "2018-11-08T19:32:32Z",
+                    "minor": true,
+                    "size": 22832,
+                    "comment": "Änderungen von [[Special:Beiträge/2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77|2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77]] ([[Benutzer Diskussion:2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77|Diskussion]]) rückgängig gemacht ([[WP:Huggle|HG]]) (3.4.4)",
+                    "user": {
+                        "id": 343610,
+                        "name": "Regi51"
+                    },
+                    "delta": -32
+                },
+                {
+                    "id": 182581154,
+                    "timestamp": "2018-11-08T19:32:14Z",
+                    "minor": false,
+                    "size": 22864,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77"
+                    },
+                    "delta": 32
+                },
+                {
+                    "id": 182581145,
+                    "timestamp": "2018-11-08T19:31:55Z",
+                    "minor": true,
+                    "size": 22832,
+                    "comment": "Änderungen von [[Special:Beiträge/2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77|2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77]] ([[Benutzer Diskussion:2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77|Diskussion]]) rückgängig gemacht ([[WP:Huggle|HG]]) (3.4.4)",
+                    "user": {
+                        "id": 343610,
+                        "name": "Regi51"
+                    },
+                    "delta": -8
+                },
+                {
+                    "id": 182581142,
+                    "timestamp": "2018-11-08T19:31:45Z",
+                    "minor": false,
+                    "size": 22840,
+                    "comment": "",
+                    "user": {
+                        "id": null,
+                        "name": "2A02:1205:34EE:1D70:FD1F:683F:D1B9:4E77"
+                    },
+                    "delta": 8
+                },
+                {
+                    "id": 178023080,
+                    "timestamp": "2018-06-04T10:27:34Z",
+                    "minor": true,
+                    "size": 22832,
+                    "comment": "Änderungen von [[Special:Contributions/93.196.113.136|93.196.113.136]] ([[User talk:93.196.113.136|Diskussion]]) auf die letzte Version von [[:Benutzer:Skipper69|Skipper69]] zurückgesetzt",
+                    "user": {
+                        "id": 174216,
+                        "name": "Harry8"
+                    },
+                    "delta": -10
+                },
+                {
+                    "id": 178023072,
+                    "timestamp": "2018-06-04T10:27:17Z",
+                    "minor": false,
+                    "size": 22842,
+                    "comment": "flash",
+                    "user": {
+                        "id": null,
+                        "name": "93.196.113.136"
+                    },
+                    "delta": 10
+                },
+                {
+                    "id": 177899286,
+                    "timestamp": "2018-05-31T07:50:50Z",
+                    "minor": false,
+                    "size": 22832,
+                    "comment": "detto",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": 91
+                },
+                {
+                    "id": 177899122,
+                    "timestamp": "2018-05-31T07:43:30Z",
+                    "minor": false,
+                    "size": 22741,
+                    "comment": "katfix",
+                    "user": {
+                        "id": 322749,
+                        "name": "Skipper69"
+                    },
+                    "delta": -55
+                },
+                {
+                    "id": 174141236,
+                    "timestamp": "2018-02-18T11:32:45Z",
+                    "minor": false,
+                    "size": 22796,
+                    "comment": "+ siehe auch",
+                    "user": {
+                        "id": 7499,
+                        "name": "Wolfgang1018"
+                    },
+                    "delta": 55
+                },
+                {
+                    "id": 171387545,
+                    "timestamp": "2017-11-25T21:01:12Z",
+                    "minor": false,
+                    "size": 22741,
+                    "comment": "",
+                    "user": {
+                        "id": 1167837,
+                        "name": "DownUnder36"
+                    },
+                    "delta": 48
+                },
+                {
+                    "id": 170694182,
+                    "timestamp": "2017-11-05T17:54:51Z",
+                    "minor": true,
+                    "size": 22693,
+                    "comment": "/* Loiretal */",
+                    "user": {
+                        "id": 1575924,
+                        "name": "Lektor w"
+                    },
+                    "delta": -1
+                },
+                {
+                    "id": 170694158,
+                    "timestamp": "2017-11-05T17:53:57Z",
+                    "minor": false,
+                    "size": 22694,
+                    "comment": "/* Loiretal */ Kulturlandschaft, nicht Naturlandschaft. Genauer, Referenz.",
+                    "user": {
+                        "id": 1575924,
+                        "name": "Lektor w"
+                    },
+                    "delta": 273
+                },
+                {
+                    "id": 169574308,
+                    "timestamp": "2017-10-01T02:40:24Z",
+                    "minor": true,
+                    "size": 22421,
+                    "comment": "genauer",
+                    "user": {
+                        "id": 1575924,
+                        "name": "Lektor w"
+                    },
+                    "delta": 5
+                },
+                {
+                    "id": 169519411,
+                    "timestamp": "2017-09-29T02:23:37Z",
+                    "minor": true,
+                    "size": 22416,
+                    "comment": "Änderung 169512399 von [[Special:Contribs/Lektor w|Lektor w]] rückgängig gemacht; war doch richtig so, weil die Loire knapp an Angers vorbei fließt.",
+                    "user": {
+                        "id": 1575924,
+                        "name": "Lektor w"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 169512669,
+                    "timestamp": "2017-09-28T19:16:51Z",
+                    "minor": false,
+                    "size": 22416,
+                    "comment": "Reihenfolge gemäß Flusslauf",
+                    "user": {
+                        "id": 1575924,
+                        "name": "Lektor w"
+                    },
+                    "delta": 0
+                },
+                {
+                    "id": 169512399,
+                    "timestamp": "2017-09-28T19:06:48Z",
+                    "minor": true,
+                    "size": 22416,
+                    "comment": "Vgl. Karte. Angers ist auch viel größer als Saumur.",
+                    "user": {
+                        "id": 1575924,
+                        "name": "Lektor w"
+                    },
+                    "delta": 0
+                }
+            ],
+            "latest": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history",
+            "older": null,
+            "newer": "https://de.wikipedia.org/w/rest.php/v1/page/Loire/history?newer_than=185611359"
+        }
+    ]
+}
