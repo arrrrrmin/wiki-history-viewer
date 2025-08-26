@@ -25,5 +25,6 @@ export const { handle, signIn, signOut } = SvelteKitAuth(
             },
         },
         debug: dev,
+        trustHost: true,
     } satisfies AuthConfig,
 );
