@@ -53,7 +53,7 @@ function createRevisionsStore() {
                 }
 
                 merged.sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
-                
+
                 return {
                     revisions: merged,
                     continueKey,
@@ -89,9 +89,17 @@ export const userRevisionsStore = derived(
         const { revisions } = $revisionsStore;
         const { allowMinors, allowUnknownEditors } = $dataSettingsStore;
 
+        function checkIp(ip: string) {
+            const ipv4 =
+                /^(\d{1,3}\.){3}\d{1,3}$/;
+            const ipv6 =
+                /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+            return ipv4.test(ip) || ipv6.test(ip);
+        }
+
         const filteredRevisions = revisions.filter(rev => {
             if (!allowMinors && rev.minor) return false;
-            if (!allowUnknownEditors && !rev.user?.name) return false;
+            if (!allowUnknownEditors && (!rev.user?.name || checkIp(rev.user.name))) return false;
             return true;
         });
         return d3.groups(filteredRevisions, r => r.user.name).map(

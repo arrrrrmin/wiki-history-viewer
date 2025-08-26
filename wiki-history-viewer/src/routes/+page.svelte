@@ -145,7 +145,8 @@
         >
             {projectConfig.credits}
             <br />
-            This is an open source tool. If you want to check the source code you can do so:
+            This is an open source tool. If you want to check the source code you
+            can do so:
             <a
                 href={projectConfig.source.url}
                 target="_blank"
@@ -247,22 +248,26 @@
     </div>
     {#if $hasParsedStore && $hasRevisionsStore}
         {#if isLoggedIn}
-            <div class="mx-auto mt-8 max-w-6xl border-t-1 border-gray-200">
+            <div
+                class="mx-auto mt-4 sm:mt-8 max-w-6xl border-t-1 border-gray-200"
+            >
                 <LifetimeState />
             </div>
         {/if}
-        <div class="mx-auto mt-8 max-w-6xl border-t-1 border-gray-200">
+        <div class="mx-auto mt-4 sm:mt-8 max-w-6xl border-t-1 border-gray-200">
             <DataOptions />
         </div>
-        <div class="mx-auto mt-8 max-w-6xl border-t-1 border-gray-200">
+        <div class="mx-auto mt-4 sm:mt-8 max-w-6xl border-t-1 border-gray-200">
             <Simpleline id="revoverview" isMobile={$isMobileStore} />
         </div>
         {#if isLoggedIn}
-            <div class="mx-auto mt-8 max-w-6xl border-t-1 border-gray-200">
+            <div
+                class="mx-auto mt-4 sm:mt-8 max-w-6xl border-t-1 border-gray-200"
+            >
                 <Download />
             </div>
         {/if}
-        <div class="mx-auto mt-8 max-w-6xl border-t-1 border-gray-200">
+        <div class="mx-auto mt-4 sm:mt-8 max-w-6xl border-t-1 border-gray-200">
             <UserStats bind:input />
         </div>
     {/if}

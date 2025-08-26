@@ -130,6 +130,15 @@ export interface PageStatistics {
     reverted: CountResponse | null; // Limit: 30,000
 }
 
+export const apiCountLimits: { [k: string]: number } = {
+    anonymous: 10000,
+    bot: 10000,
+    editors: 25000,
+    edits: 30000,
+    minor: 1000,
+    reverted: 30000,
+}
+
 
 async function fetchStatistic(
     typeKey: string,

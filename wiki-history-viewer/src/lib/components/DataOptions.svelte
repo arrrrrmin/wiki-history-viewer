@@ -2,8 +2,11 @@
     import { dataSettingsStore } from "$lib/stores/datasettings";
 </script>
 
-<div class="m-auto max-w-4xl mt-8 pb-6 px-4 sm:px-6 lg:px-8">
+<div class="m-auto max-w-4xl mt-8 mb-8 px-4 sm:px-6 lg:px-8">
     <legend class="sr-only">Options</legend>
+    <p class="mt-1 md:mt-2 pb-4 md:pb-4 max-w-4xl text-sm md:text-base text-gray-700">
+        Using the toggle you can filter the visualisation and lists values.
+    </p>
     <!-- allowMinors -->
     <div class="flex gap-3">
         <div

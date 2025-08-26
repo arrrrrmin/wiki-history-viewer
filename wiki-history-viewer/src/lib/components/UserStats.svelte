@@ -5,7 +5,11 @@
     let url = new URL(input.trim());
 
     const dateString = (d: Date): string => {
-        return `${d.getFullYear()}/${d.getDate()}/${d.getMonth() + 1} ${d.getHours()}:${d.getMinutes()}`;
+        // return `${d.getFullYear()}/${d.getDate()}/${d.getMonth() + 1} ${d.getHours()}:${d.getMinutes()}`;
+        return d
+            .toISOString()
+            .replace("T", " ")
+            .replace(/(\:\d\d\.\d\d\dZ)/, "");
     };
 
     const getUserSite = (user: string): string => {
@@ -25,7 +29,7 @@
     role="list"
     class="grid grid-cols-1 gap-4 pl-4 sm:px-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
 >
-    {#each $userRevisionsStore as userRevisions}
+    {#each $userRevisionsStore.slice(0, 15) as userRevisions}
         <li
             class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
         >
