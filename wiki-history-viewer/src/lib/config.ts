@@ -15,11 +15,11 @@ export interface ProjectConfig {
 
 
 export const projectConfig: ProjectConfig = {
-    title: "Wiki Histographer", // "Wikipedia History Visualizer",
+    title: "Wikirevia",
     description: "Visualize the revision history of wikipedia articles over time.",
     source: {
         url: "https://github.com/arrrrrmin/wiki-history-viewer",
-        name: "wiki-history-viewer"
+        name: "Wikirevia"
     },
     author: "https://gravatar.com/defendorjoyfully5b71a1a62b",
     credits: "This projects is build on top of an open API provided by the Wikimedia Foundation and fueled by regional wikipedias, which are founded by donations. So you could consider donating.",
