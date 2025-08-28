@@ -118,7 +118,7 @@
         </div>
         <div class="text-sm/6">
             <label for="allowUnknownEditors" class="font-medium text-gray-900"
-                >Anonymous/banned users</label
+                >Unnamed users</label
             >
             <p
                 id="allow-unknown-editors-description"
