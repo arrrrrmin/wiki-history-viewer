@@ -64,6 +64,7 @@
             // Query basic page statistics
             if (!next) {
                 // Only perform this query on initial load
+                //@ts-ignore
                 const pageStatistics: PageStatistics =
                     await fetchPageStatistics(
                         $parserStore?.project!,

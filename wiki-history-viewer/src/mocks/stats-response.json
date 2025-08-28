@@ -1,0 +1,37 @@
+{
+    "anonymous": {
+        "count": 2314,
+        "limit": false,
+        "type": "anonymous"
+    },
+    "bot": {
+        "count": 159,
+        "limit": false,
+        "type": "bot"
+    },
+    "editors": {
+        "count": 4066,
+        "limit": false,
+        "type": "editors"
+    },
+    "edits": {
+        "count": 9192,
+        "limit": false,
+        "type": "edits"
+    },
+    "minor": {
+        "errorKey": "rest-pagehistorycount-too-many-revisions",
+        "httpCode": 500,
+        "httpReason": "Internal Server Error",
+        "messageTranslations": {
+            "en": "The specified title contains too many revisions to retrieve this count."
+        },
+        "reqId": "7d98c8b2-7cc3-4827-8d92-f69bce27ac45",
+        "type": "minor"
+    },
+    "reverted": {
+        "count": 77,
+        "limit": false,
+        "type": "reverted"
+    }
+}

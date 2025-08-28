@@ -1,6 +1,7 @@
 import { isLoggedIn, userStore } from "$lib/stores/user";
 import { revisionsStore } from "$lib/stores/revisions";
 import mockData from "../mocks/api-response.json";
+import mockStats from "../mocks/stats-response.json";
 import { WikimediaAPIAccountError } from "./validation.errors";
 import { parserStore } from "./stores/parser";
 
@@ -164,10 +165,14 @@ export async function fetchPageStatistics(
     signal?: AbortSignal,
 ) {
     let results: CountResponse[] = [];
-    for (const typeKey of ['anonymous', 'bot', 'editors', 'edits', 'minor', 'reverted']) {
-        const data = await fetchStatistic(typeKey, project, lang, title, signal)
-        results.push({ ...data, type: typeKey })
-    };
+    if (useMock !== undefined) {
+        return mockStats;
+    } else {
+        for (const typeKey of ['anonymous', 'bot', 'editors', 'edits', 'minor', 'reverted']) {
+            const data = await fetchStatistic(typeKey, project, lang, title, signal)
+            results.push({ ...data, type: typeKey })
+        };
+    }
     if (!(results.length === 6)) throw new Error('Something went wrong when querying the API for base stats.');
     return {
         anonymous: results[0],
