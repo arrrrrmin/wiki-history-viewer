@@ -57,7 +57,7 @@ function createRevisionsStore() {
                 return {
                     revisions: merged,
                     continueKey,
-                    hasMore: continueKey !== null && merged.length > 0,
+                    hasMore: continueKey !== undefined && merged.length > 0,
                     isLoading: state.isLoading,
                 };
             })

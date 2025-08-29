@@ -5,13 +5,20 @@
 
     import { parserStore } from "$lib/stores/parser";
     import { dataSettingsStore } from "$lib/stores/datasettings";
-    import { revisionsStore, hasRevisionsStore } from "$lib/stores/revisions";
+    import {
+        hasRevisionsStore,
+        filteredRevisionsStore,
+    } from "$lib/stores/revisions";
     import { isMobileStore } from "$lib/stores/mobile";
 
     import * as utils from "$lib/d3js/utils";
     import { queryConfig } from "$lib/config";
+    import Tooltip from "./Tooltip.svelte";
 
     let { ...props } = $props();
+
+    // Of type import RevisionTooltipInfo
+    let selectRevision = $state(null);
 
     // Visualisation variables
     const id = props.id;
@@ -19,6 +26,7 @@
     let width = utils.getDependentWidth();
     let height = 500;
     const margins = { right: 20, top: 40, left: 80, bottom: 40 };
+    const radius = 3.5;
     const t = queryConfig.decay;
 
     // Internal helper variables
@@ -29,23 +37,17 @@
     let y = d3.scaleLinear();
     let svg = undefined;
     let titleEl = undefined;
+    let tooltip = undefined;
 
     const transformInputData = () => {
         // Transform input data for internal usage
         if (!$hasRevisionsStore) return;
-        let revs = $revisionsStore.revisions.slice();
+        let revs = $filteredRevisionsStore.slice();
 
         if ($isMobileStore && revs.length > 60) {
             revs = revs.slice(0, 60);
         }
-
-        if (!$dataSettingsStore.allowMinors) {
-            revs = revs.filter((r) => !r.minor);
-        }
-        if (!$dataSettingsStore.allowUnknownEditors) {
-            revs = revs.filter((r) => !r.user.name.startsWith("~"));
-        }
-        revs.sort((a, b) => a.timestamp - b.timestamp);
+        revs = revs.sort((a, b) => a.timestamp - b.timestamp);
         return revs;
     };
 
@@ -61,10 +63,23 @@
 
     let line = area.lineY1();
 
+    const findPreviousRevisionId = (revId) => {
+        if (!revId) return;
+        var index = revs.map((r) => r.id).indexOf(revId);
+        if (index - 1 >= 0 && index < revs.length) {
+            return revs[index - 1].id;
+        }
+    };
+
     onMount(() => {
         revs = transformInputData();
 
         width = utils.getDependentWidth();
+
+        // Prepare tooltip
+        tooltip = d3
+            .select(`div#${id}-tooltip`)
+            .attr("class", "hidden bg-white/50");
 
         svg = d3
             .select(`div#${id}`)
@@ -195,8 +210,47 @@
                         .attr("id", idHandler.register("circle", "revision"))
                         .attr("cx", (d) => x(d.timestamp))
                         .attr("cy", (d) => y(d.size) - y(0))
-                        .attr("r", 4)
-                        .attr("fill", "#615fff");
+                        .attr("r", radius)
+                        .attr("stroke-width", 2)
+                        .attr("fill", "#615fff")
+                        .on("mouseover", function (event) {
+                            d3.select(this)
+                                .attr("fill", "white")
+                                .attr("stroke", "#615fff")
+                                .attr("r", radius * 2);
+                        })
+                        .on("mouseout", function (event) {
+                            d3.select(this)
+                                .attr("fill", "#615fff")
+                                .attr("stroke", "none")
+                                .attr("r", radius);
+                        })
+                        .on("click", function (event, d) {
+                            if (
+                                selectRevision != null &&
+                                d.id === selectRevision.currid
+                            ) {
+                                selectRevision = null;
+                                d3.select(`div#${id}-tooltip`).attr(
+                                    "class",
+                                    "hidden bg-white/50",
+                                );
+                                return;
+                            }
+                            selectRevision = {
+                                currId: d.id,
+                                prevId: findPreviousRevisionId(d.id),
+                                title: $parserStore.title,
+                                username: d.user.name,
+                                minor: d.minor,
+                                delta: d.delta,
+                                comment: d.comment,
+                            };
+                            d3.select(`div#${id}-tooltip`).attr(
+                                "class",
+                                "absolute w-48 py-2 px-2 top-1/2 left-1/2 transform -translate-x-1/2 translate-y-2/2 sm:translate-y-3/2 rounded bg-white ring-1 ring-inset ring-gray-600/20",
+                            );
+                        });
                 },
                 (update) => {
                     update
@@ -205,7 +259,7 @@
                         .transition(t)
                         .ease(d3.easeExpInOut)
                         .attr("fill", "#615fff")
-                        .attr("r", 4);
+                        .attr("r", radius);
                 },
                 (exit) => {
                     exit.remove();
@@ -229,6 +283,7 @@
 
 <!-- Title container -->
 <div class="pb-8">
+    <Tooltip {id} bind:selectRevision />
     <div class="m-auto max-w-4xl py-4 px-4 sm:px-6 lg:px-8">
         <!-- svelte-ignore a11y_missing_content -->
         <h3 {id} class="text-xl md:text-2xl font-semibold text-gray-900"></h3>

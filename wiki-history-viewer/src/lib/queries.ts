@@ -165,7 +165,7 @@ export async function fetchPageStatistics(
     signal?: AbortSignal,
 ) {
     let results: CountResponse[] = [];
-    if (useMock !== undefined) {
+    if (useMock !== undefined && useMock) {
         return mockStats;
     } else {
         for (const typeKey of ['anonymous', 'bot', 'editors', 'edits', 'minor', 'reverted']) {
