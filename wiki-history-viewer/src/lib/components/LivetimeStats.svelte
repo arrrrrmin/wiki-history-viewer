@@ -6,7 +6,6 @@
         value: CountResponse | Object,
         key: string,
     ): string => {
-        console.log(key, value)
         if ("count" in value) {
             return `${(value as CountResponse).count}`;
         }

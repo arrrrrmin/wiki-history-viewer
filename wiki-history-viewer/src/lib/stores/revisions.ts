@@ -99,7 +99,7 @@ export const userRevisionsStore = derived(
 
         const filteredRevisions = revisions.filter(rev => {
             if (!allowMinors && rev.minor) return false;
-            if (!allowUnknownEditors && (!rev.user?.name || checkIp(rev.user.name))) return false;
+            if (!allowUnknownEditors && (!rev.user?.name || checkIp(rev.user.name) || rev.user.name.startsWith("~"))) return false;
             return true;
         });
         return d3.groups(filteredRevisions, r => r.user.name).map(

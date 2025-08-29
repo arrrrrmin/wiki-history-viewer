@@ -29,7 +29,6 @@ export function downloadFile(data: string, filename: string, type: string) {
  */
 export function exportAsJSON(revisions?: WikimediaRevision[]) {
     if (!revisions) return;
-    console.log(revisions);
     const jsonString = JSON.stringify(revisions, null, 4);
     downloadFile(jsonString, `wikipedia_revisions_${default_suffix()}.json`, 'application/json');
 }
