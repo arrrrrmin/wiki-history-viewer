@@ -238,9 +238,10 @@
                                 return;
                             }
                             selectRevision = {
+                                title: $parserStore.title,
+                                lang: $parserStore.lang,
                                 currId: d.id,
                                 prevId: findPreviousRevisionId(d.id),
-                                title: $parserStore.title,
                                 username: d.user.name,
                                 minor: d.minor,
                                 delta: d.delta,
@@ -248,7 +249,7 @@
                             };
                             d3.select(`div#${id}-tooltip`).attr(
                                 "class",
-                                "absolute w-48 py-2 px-2 top-1/2 left-1/2 transform -translate-x-1/2 translate-y-2/2 sm:translate-y-3/2 rounded bg-white ring-1 ring-inset ring-gray-600/20",
+                                "absolute min-w-48 py-2 px-2 top-1/2 left-1/2 transform -translate-x-1/2 translate-y-2/2 sm:translate-y-3/2 rounded bg-white ring-1 ring-inset ring-gray-600/20",
                             );
                         });
                 },

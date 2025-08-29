@@ -1,7 +1,8 @@
 export type RevisionTooltipInfo = {
+    title: string;
+    lang: string;
     currId: number;
     prevId: number;
-    title: string;
     username: string;
     minor: boolean;
     delta: number;

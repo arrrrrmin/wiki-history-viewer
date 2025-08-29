@@ -1,6 +1,7 @@
 import { isMobileStore } from "$lib/stores/mobile";
 import * as d3 from "d3";
 import type { RevisionTooltipInfo } from "./types.helpers";
+import { parserStore } from "$lib/stores/parser";
 
 type ElementKey = string;
 type ElementType = string;
@@ -61,12 +62,11 @@ export const setAxisText = (g: any, size: string | number | boolean | readonly (
     return g.selectAll("text").attr("font-size", size);
 };
 
-
-
 export const getDiffUrl = (revTooltipInfo?: RevisionTooltipInfo): string | undefined => {
     if (!revTooltipInfo) return;
     let title = revTooltipInfo.title;
+    let lang = revTooltipInfo.lang;
     let currId = revTooltipInfo.currId;
     let prevId = revTooltipInfo.prevId;
-    return `https://en.wikipedia.org/w/index.php?title=${encodeURI(title)}&diff=${prevId}&oldid=${currId}&variant=en`
+    return `https://${lang}.wikipedia.org/w/index.php?title=${encodeURI(title)}&diff=${prevId}&oldid=${currId}&variant=en`
 }
